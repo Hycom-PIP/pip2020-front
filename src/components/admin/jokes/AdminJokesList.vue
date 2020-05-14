@@ -16,7 +16,7 @@
             <div class="row">
                 <div v-if="showCategories" class="col-12">
                     <div v-if="categories.length == 0">
-                        <div class="text-center mt-4">   
+                        <div class="text-center mt-4">
                             <h4>{{ $t('adminJokes.emptyListOfCategoryTitle') }} <button class="btn btn-outline-secondary" v-on:click="addCategoryShowModal" >{{ $t('adminJokes.emptyListOfCategoryButton') }}</button></h4>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                 </div>
                 <div v-else-if="showJokes" class="col-12">
                     <div v-if="jokes.length == 0">
-                        <div class="text-center mt-4">   
+                        <div class="text-center mt-4">
                             <h4>{{ $t('adminJokes.emptyListOfJokeTitle') }} <button class="btn btn-outline-secondary" v-on:click="addJokeShowModal" >{{ $t('adminJokes.emptyListOfJokeButton') }}</button></h4>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
             <ul v-if="addCategory.errors.length" class="alert alert-danger" role="alert">
                 <li v-for="(error) in addCategory.errors" :key="error">{{error}}</li>
             </ul>
-            
+
             <form  @submit="addNewCategorySubmit">
                 <div class="form-group">
                     <label for="inputJoke">{{ $t('adminJokes.modalNewCategory') }}</label>
@@ -59,7 +59,7 @@
             <ul v-if="editCategory.errors.length" class="alert alert-danger" role="alert">
                 <li v-for="(error) in editCategory.errors" :key="error">{{error}}</li>
             </ul>
-            
+
             <form  @submit="editCategorySubmit">
                 <div class="form-group">
                     <label for="inputJoke">{{ $t('adminJokes.modalEditCategory') }}</label>
@@ -84,11 +84,11 @@
             <ul v-if="addJoke.errors.length" class="alert alert-danger" role="alert">
                 <li v-for="(error) in addJoke.errors" :key="error">{{error}}</li>
             </ul>
-            
+
             <form  @submit="addNewJokeSubmit">
                 <div class="form-group">
                     <label for="inputJoke">{{ $t('adminJokes.modalNewJoke') }}</label>
-                    <input type="text" class="form-control" v-model="addJoke.joke">
+                    <b-textarea cols="15" rows="5" v-model="addJoke.joke" />
                 </div>
                 <div class="text-right">
                     <button type="submit" class="btn btn-primary" :disabled="checkAddJoke" >{{ $t('adminJokes.modalAddJokeSubmit') }}</button>
@@ -100,11 +100,11 @@
             <ul v-if="editJoke.errors.length" class="alert alert-danger" role="alert">
                 <li v-for="(error) in editJoke.errors" :key="error">{{error}}</li>
             </ul>
-            
+
             <form  @submit="editJokeSubmit">
                 <div class="form-group">
                     <label for="inputJoke">{{ $t('adminJokes.modalEditJoke') }}</label>
-                    <input type="text" class="form-control" v-model="editJoke.newJoke">
+                    <b-textarea cols="20" rows="5" type="text" class="form-control" v-model="editJoke.newJoke"/>
                 </div>
                 <div class="text-right">
                     <button type="submit" class="btn btn-primary" :disabled="checkEditJoke" >{{ $t('adminJokes.modalEditJokeButton') }}</button>
@@ -178,7 +178,7 @@ export default {
                         this.categories = response
                         this.showCategories = true
                     }
-                        
+
                 });
     },
     methods: {
@@ -203,30 +203,30 @@ export default {
                         this.categories.push({category: this.addCategory.name})
                         this.$bvModal.hide('add-category-modal')
                     }
-                        
+
                 })
             }
-           
+
         },
         showJokesForCategory(category){
             this.showLoading = true
             this.error = ''
             this.showCategories = false
-            
+
             service.getJokesForCategory(category.category)
                 .then(
                     response =>  {
                         this.showLoading = false
 
                         if(response.errors) {
-                            this.error = this.$t('adminJokes.errorListOfJokes') + response.errors[0] 
+                            this.error = this.$t('adminJokes.errorListOfJokes') + response.errors[0]
                         }
                         else {
                             this.currentCategory = category.category
                             this.jokes = response
                             this.showJokes = true
                         }
-                            
+
                 });
 
 
@@ -263,7 +263,7 @@ export default {
             else {
                 service.editCategory(
                     {category: this.editCategory.oldCategory},
-                    {category: this.editCategory.newCategory} 
+                    {category: this.editCategory.newCategory}
                     ).then(response => {
                     if(response.errors)
                         this.editCategory.errors.push(this.$t('adminJokes.errorEditResponseCategory'))
@@ -272,11 +272,11 @@ export default {
                         this.categories.push({category: this.editCategory.newCategory})
                         this.$bvModal.hide('edit-category-modal')
                     }
-                        
+
                 })
             }
 
-            
+
         },
         addJokeShowModal(){
             this.$bvModal.show('add-joke-modal')
@@ -292,6 +292,7 @@ export default {
             if(errors.length > 0)
                 this.addJoke.errors = errors
             else{
+                console.log(this.addJoke.joke);
                 service.addJoke(this.addJoke.joke, this.currentCategory).then(response => {
                     if(response.errors)
                         this.addJoke.errors.push(this.$t('adminJokes.errorAddResponseCategory'))
@@ -299,10 +300,10 @@ export default {
                         this.jokes.push(response)
                         this.$bvModal.hide('add-joke-modal')
                     }
-                        
+
                 })
             }
-            
+
         },
         editJokeModal(joke) {
             this.editJoke.id = joke.id
@@ -339,10 +340,10 @@ export default {
                         })
                         this.$bvModal.hide('edit-joke-modal')
                     }
-                        
+
                 })
             }
-            
+
         },
         removeJoke(jokeId){
             this.error = ''
@@ -351,14 +352,14 @@ export default {
                     response => {
                         if(response.errors)
                             this.error = this.$t('adminJokes.errorDelete')
-                        else 
+                        else
                             this.jokes = this.jokes.filter((val) => val.id != jokeId);
                     }
                 )
         }
     },
     computed: {
-        checkEditCategory() { 
+        checkEditCategory() {
             return this.editCategory.oldCategory === this.editCategory.newCategory || this.editCategory.newCategory.length === 0
         },
         checkAddJoke() {
