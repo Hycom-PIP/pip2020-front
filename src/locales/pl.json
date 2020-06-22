@@ -259,7 +259,8 @@
       "valueStockInDay": "Wartośc akcji w dniu",
       "valueStockToday": "Wartośc obecna akcji",
       "value": "była równa: ",
-      "isValue": "jest równa: "
+      "isValue": "jest równa: ",
+      "nonExistingData": "Wybacz ale nie posiadam danych o akcjach w tym dniu."
     },
     "buttons": {
       "currency": "Waluta",
