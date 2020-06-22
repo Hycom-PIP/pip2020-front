@@ -62,7 +62,8 @@
       "anotherJokeBtn": "Kolejny żart",
       "rateJokeBtn": "Oceń żart",
       "tellJokeBtn": "Opowiem Ci żart",
-      "tellJokePlaceholder": "Podaj treść żartu..."
+      "tellJokePlaceholder": "Podaj treść żartu...",
+      "addJokeButton": "Dodaj żart"
     },
     "bot": {
       "cheeringUp": "Chętnie poprawie Ci humor!",
