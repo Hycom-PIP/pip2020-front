@@ -62,7 +62,8 @@
       "anotherJokeBtn": "Kolejny żart",
       "rateJokeBtn": "Oceń żart",
       "tellJokeBtn": "Opowiem Ci żart",
-      "tellJokePlaceholder": "Podaj treść żartu..."
+      "tellJokePlaceholder": "Podaj treść żartu...",
+      "addJokeButton": "Dodaj żart"
     },
     "bot": {
       "cheeringUp": "Chętnie poprawie Ci humor!",
@@ -251,7 +252,7 @@
       "chooseTime": "Z jakiego okresu chcesz dane?",
       "actualData": "Oto aktualne ceny akcji: ",
       "futureData": "Oto prognoza cen akcji: ",
-      "historyData": "Oto historyczne ceny akcji dla wybranego okresu: ",
+      "historyData": "Oto historyczne ceny akcji dla okresu ",
       "historyDataDay": "Oto historyczne dane cen akcji dla wybranego dnia: ",
       "historyChoice": "Wybierasz dzień czy okres?",
       "dayChoice": "A z jakiego konretnie?",
@@ -260,7 +261,8 @@
       "valueStockToday": "Wartośc obecna akcji",
       "value": "była równa: ",
       "isValue": "jest równa: ",
-      "nonExistingData": "Niestety nie posiadam danych z tego dnia, musisz wybrać inny"
+      "nonExistingData": "Niestety nie posiadam danych z tego dnia, musisz wybrać inny",
+      "noData": "Oj. Nie mogę pobrać danych."
     },
     "buttons": {
       "currency": "Waluta",

@@ -2,11 +2,13 @@
     <div>
         <JokesCategoryChooser v-if="showCategories" v-on:chooseCategory="saveCategory($event)"></JokesCategoryChooser>
         <b-form @submit="saveJoke" v-if="!showCategories">
-            <b-form-input v-model="joke"
-                          type="text"
-                          required
-                          :placeholder="$t('jokes.user.tellJokePlaceholder')">
-            </b-form-input>
+            <b-form-textarea v-model="joke"
+                            rows="3"
+                            max-rows="6"
+                            required
+                            :placeholder="$t('jokes.user.tellJokePlaceholder')">
+            </b-form-textarea>
+            <b-button type="submit" variant="primary" class="mt-3">{{ $t('jokes.user.addJokeButton') }}</b-button>
         </b-form>
     </div>
 </template>
