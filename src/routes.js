@@ -4,6 +4,9 @@ import AdminHome from './components/admin/AdminHome';
 import AdminJokesList from './components/admin/jokes/AdminJokesList.vue'
 import AdminForecasts from './components/admin/forecasts/AdminForecasts.vue'
 import AdminForecastsCityList from './components/admin/forecasts/AdminForecastsCityList.vue'
+import AdminFortune from "./components/admin/fortune/AdminFortune";
+import AdminFortuneCurrencies from "./components/admin/fortune/AdminFortuneCurrencies";
+import AdminFortuneCompanies from "./components/admin/fortune/AdminFortuneCompanies";
 
 export const routesNames = {
     home: '/home',
@@ -11,7 +14,10 @@ export const routesNames = {
     adminHome: '/admin/home',
     adminJokesList: '/admin/jokes',
     AdminForecasts: '/admin/forecasts',
-    AdminForecastsCityList: '/admin/forecasts/country/:countryId'
+    AdminForecastsCityList: '/admin/forecasts/country/:countryId',
+    AdminFortune: '/admin/fortune',
+    AdminFortuneCurrencies: '/admin/fortune/currencies',
+    AdminFortuneCompanies: '/admin/fortune/companies'
 };
 
 export const routes = [
@@ -20,7 +26,11 @@ export const routes = [
     {path: routesNames.adminHome, component: AdminHome},
     { name:'admin-jokes', path: routesNames.adminJokesList, component: AdminJokesList},
     {name:'admin-forecasts', path: routesNames.AdminForecasts, component: AdminForecasts},
-    {name:'admin-forecasts-city-list', path: routesNames.AdminForecastsCityList, component: AdminForecastsCityList}
+    {name:'admin-forecasts-city-list', path: routesNames.AdminForecastsCityList, component: AdminForecastsCityList},
+    {name:'admin-fortune', path: routesNames.AdminFortune, component: AdminFortune},
+    {name:'admin-fortune-currencies', path: routesNames.AdminFortuneCurrencies, component: AdminFortuneCurrencies},
+    {name:'admin-fortune-companies', path: routesNames.AdminFortuneCompanies, component: AdminFortuneCompanies},
+
 ];
 
 

@@ -123,7 +123,8 @@
       "weather": "Pogoda",
       "restaurant": "Restauracje",
       "jokes": "Żarty",
-      "maps": "Mapy"
+      "maps": "Mapy",
+      "fortune": "Fortuna"
     }
   },
   "adminJokes": {
@@ -220,6 +221,43 @@
     "modalRemoveCityButton": "Usuń miasto",
     "errorEditResponseCity": "Wystąpił błąd podczas edytowania miasta",
     "errorRemoveResponseCity": "Wystąpił błąd podczas usuwania miasta"
+  },
+  "adminFortune": {
+    "currencies": "Waluty",
+    "companies": "Spółki",
+    "currency": "Waluta",
+    "buttonDeleteCurrency": "Usuń walutę",
+    "buttonAddCurrency": "Dodaj walutę",
+    "noCurrency": "Nie ma żadnych walut",
+    "noCompany": "Nie ma żadnych spółek",
+    "symbol": "Symbol",
+    "companyName": "Nazwa spółki",
+    "buttonAddCompany": "Dodaj spółkę",
+    "buttonEditCompany": "Edytuj spółkę",
+    "buttonDeleteCompany": "Usuń spółkę",
+    "loadingTitle": "Trwa ładowanie 🔥🔥🔥",
+    "modalEditCompanyTitle": "Edycja spółki",
+    "modalEditSymbol": "Symbol spółki",
+    "modalEditName": "Nazwa spółki",
+    "modalRemoveCompanyTitle": "Usuń spółkę",
+    "modalRemoveCompanyTextAlert": "Czy na pewno chcesz usunąć tę spółkę?",
+    "modalAddCompanyTitle": "Dodawanie spółki",
+    "modalNewSymbol": "Symbol spółki",
+    "modalNewName": "Nazwa spółki",
+    "modalAddCompanySubmit": "Dodaj spółkę",
+    "modalRemoveCurrencyTitle": "Usuń walutę",
+    "modalRemoveCurrencyTextAlert": "Czy na pewno chcesz usunąć tę walutę?",
+    "modalRemoveCurrencyButton": "Usuń walutę",
+    "modalAddCurrencyTitle": "Dodawanie waluty",
+    "modalNewCurrency": "Waluta",
+    "modalAddCurrencySubmit": "Dodaj walutę",
+    "errorRemoveResponseCurrency": "Wystąpił błąd podczas usuwania waluty.",
+    "errorAddResponseCurrency": "Wystąpił błąd podczas tworzenia waluty.",
+    "errorLoadingResponseCurrency": "Wystąpił błąd podczas wczytywania listy walut.",
+    "errorRemoveResponseCompany": "Wystąpił błąd podczas usuwania spółki.",
+    "errorAddResponseCompany": "Wystąpił błąd podczas tworzenia spółki.",
+    "errorEditResponseCompany": "Wystąpił błąd podczas edycji spółki."
+
   },
   "login": {
     "title": "Panel Logowania Admina",
