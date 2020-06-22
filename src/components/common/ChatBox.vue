@@ -14,6 +14,9 @@
                                          v-else-if="message.style === 'weatherDetailsMessage'"></weather-details-message>
                 <JokesMessage v-bind:data="message.data" v-else-if="message.style === 'jokesMessage'"></JokesMessage>
                 <RestaurantMessage v-bind:data="message.data" v-else-if="message.style === 'restaurantMessage'"/>
+                <div class="chart-component" v-if="message.style === 'chart'">
+                    <Chart :width="'2000px'" :chartData="message.data"></chart>
+                </div>
                 <ChatBoxAnimation  v-bind:data-with="message.author"
                                   v-if="index === lastMessageIndex && messageAnimate" />
                 <p v-if="index === lastBotMessageIndex">
@@ -35,7 +38,7 @@
 </template>
 
 <script>
-
+    import Chart from "../categories/money/models/Chart";
     import Weather from "../categories/weather/Weather";
     import WeatherMessage from "../categories/weather/models/WeatherMessage";
     import WeatherDetailsMessage from "../categories/weather/models/WeatherDetailsMessage";
@@ -51,6 +54,7 @@
     export default {
         name: "ChatBox",
         components: {
+            Chart,
             RestaurantMessage,
             Restaurants,
             JokesMessage,
@@ -67,7 +71,6 @@
                 activeCategory: null,
                 messageAnimate: false,
                 themeService
-
             }
         },
         methods: {
@@ -127,7 +130,6 @@
 </script>
 
 <style>
-
     .chat-box {
         padding: 0 40px 60px;
     }
@@ -242,5 +244,8 @@
         border-image-slice: 5;
     }
 
-
+    .chart-component {
+        width: 70%;
+        overflow-x: scroll;
+    }
 </style>

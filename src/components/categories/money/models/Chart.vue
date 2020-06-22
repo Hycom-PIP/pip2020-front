@@ -9,17 +9,14 @@
         props: ['chartData'],
 
         data() {
-            let fontColor = (themeService.getActiveTheme().themeName == 'dark') ? '#ffffff' : '#000000'
-
             return {
-                themeService: themeService,
-                fontColor: fontColor,
+                fontColor: '',
                 options: {
-                    responsive: true,
+                    responsive: false,
                     maintainAspectRatio: false,
                     legend: {
                         labels: {
-                            fontColor: fontColor
+                            fontColor: ''
                         }
                     },
                     scales: {
@@ -41,13 +38,13 @@
                             ticks: {
                                 autoSkip: true,
                                 maxTicksLimit: 20,
-                                fontColor: fontColor
+                                fontColor: ''
                             }
                         }],
 
                         yAxes: [{
                             ticks: {
-                                fontColor: fontColor
+                                fontColor: ''
                             }
                         }]
                     }
@@ -58,8 +55,27 @@
         created() {
             moment.locale('pl')
 
+            let fontColor
+            let theme = themeService.getActiveTheme().themeName
+
+            if (theme == 'dark') {
+                fontColor = '#ffffff'
+            }
+
+            else if (theme == 'blue') {
+                fontColor = '#ffffff'
+            }
+            
+            else if (theme == 'light') {
+                fontColor = '#000000'
+            }
+
+            console.log('start: ' + fontColor)
+            
+            this.setColor()
+
             setInterval(() => {
-                this.fontColor = (this.themeService.getActiveTheme().themeName == 'dark') ? '#ffffff' : '#000000'
+                this.fontColor = this.getColor()
             }, 10)
         },
 
@@ -69,12 +85,31 @@
 
         watch: {
             fontColor () {
-                this.options.scales.xAxes[0].ticks.fontColor = this.fontColor
-                this.options.scales.yAxes[0].ticks.fontColor = this.fontColor
-                this.options.legend.labels.fontColor = this.fontColor
-
+                this.setColor()
                 this.renderChart(this.chartData, this.options)
             },
+        },
+
+        methods: {
+            getColor() {
+                let theme
+
+                if (themeService) {
+                    theme = themeService.getActiveTheme().themeName
+                }
+                
+                return (theme == 'light') ? '#000000' : '#ffffff'
+            },
+
+            setColor() {
+                console.log(this.getColor())
+                this.options.scales.xAxes[0].ticks.fontColor = this.getColor()
+                this.options.scales.yAxes[0].ticks.fontColor = this.getColor()
+                this.options.legend.labels.fontColor = this.getColor()
+
+                this.chartData.datasets[0].borderColor = this.getColor()
+                this.chartData.datasets[0].pointBackgroundColor = this.getColor()
+            }
         }
     }
 </script>

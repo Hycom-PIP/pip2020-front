@@ -48,8 +48,6 @@ export default class FortuneService {
                 lineTension: 0,
                 pointRadius: 1,
                 label: stocks[0].symbol,
-                borderColor: '#2cc3ed',
-                pointBackgroundColor: '#2cc3ed',
                 fill: false,
                 data: axisY
             }]
