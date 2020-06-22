@@ -21,12 +21,8 @@
         },
         data: function () {
             return {
-                // curriences: ['USD', 'PLN', 'EUR'],
                 themeService
             }
-        },
-        mounted() {
-            // fortuneService.getAllCurrencies().then(result => this.curriences = result)
         },
         methods: {
             chosenCategory(currency) {
