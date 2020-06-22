@@ -133,7 +133,7 @@
                 .then(response => {
                     this.showLoading = false;
                     if (response.errors) {
-                        this.error = this.$t('adminJokes.errorListOfCategories') + response.errors[0]
+                        this.error = this.$t('adminJokes.errorLoadingResponseCompany') + response.errors[0]
                     } else {
                         this.companies = response;
                         this.showCompanies = true;

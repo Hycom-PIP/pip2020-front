@@ -256,8 +256,8 @@
     "errorLoadingResponseCurrency": "Wystąpił błąd podczas wczytywania listy walut.",
     "errorRemoveResponseCompany": "Wystąpił błąd podczas usuwania spółki.",
     "errorAddResponseCompany": "Wystąpił błąd podczas tworzenia spółki.",
-    "errorEditResponseCompany": "Wystąpił błąd podczas edycji spółki."
-
+    "errorEditResponseCompany": "Wystąpił błąd podczas edycji spółki.",
+    "errorLoadingResponseCompany": "Wystąpił błąd podczas wczytywania listy spółek."
   },
   "login": {
     "title": "Panel Logowania Admina",
