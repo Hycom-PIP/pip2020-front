@@ -1,29 +1,34 @@
 <template>
-    <div class="future-data-component">
-        <chart class="chart" :chartdata=this.chartdata></chart>
+    <div class="future-data-component" id="chart" v-if="stocks && stocks.length">
+        <chart class="chart" :chartData=chartData></chart>
     </div>
 </template>
 
 <script>
     import Chart from './Chart'
-    import FortuneService from '../../../../core/service/FortuneService'
-    //import {sendMessage} from "../../../common/messages"
-
-    const service = new FortuneService()
+    import { fortuneService } from '../../../../App'
+    import { sendMessage } from "../../../common/messages"
 
     export default {
-        name: "HistoryData",
+        name: "FutureData",
         props: ['stocks'],
         components: {
             Chart
         },
         data() {
             return {
-                chartdata: {}
+                chartData: {}
             }
         },
         created: function() {
-            this.chartdata = service.extractChartData(this.stocks)
+            if (this.stocks && this.stocks.length) {
+                this.chartData = fortuneService.toChartData(this.stocks)
+                sendMessage(this.$parent, 'bot', document.getElementById("chart"), 'weatherMessage') //to nie działa
+            }
+            
+            else {
+                sendMessage(this.$parent, 'bot', this.$t('fortune.bot.noData'))
+            }
         }
     }
 </script>

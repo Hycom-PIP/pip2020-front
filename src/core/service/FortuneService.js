@@ -27,15 +27,18 @@ export default class FortuneService {
         return this.httpRequest.get(`stocks/prediction/${symbol}`);
     }
 
-    extractChartData(stocks) {
+    toChartData(stocks) {
         let axisX = []
         let axisY = []
 
         for (let stock of stocks) {
             if (stock.value) {
-                let value = Math.round(stock.value * 100) / 100
-                axisX.push(stock.date[0] + '-' + stock.date[1] + '-' + stock.date[2])
-                axisY.push(value)
+                let date = stock.date[0] + '-' + stock.date[1] + '-' + stock.date[2]
+
+                if (!axisX.includes(date)) {
+                    axisX.push(date)
+                    axisY.push(Math.round(stock.value * 100) / 100)
+                }
             }
         }
 
