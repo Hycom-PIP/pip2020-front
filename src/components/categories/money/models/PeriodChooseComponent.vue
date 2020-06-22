@@ -40,6 +40,7 @@
                 const date = new Date(value);
                 const now = new Date();
                 const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
                 if (moment(today).isSameOrBefore(date)) {
                     return date !== 1
                 }

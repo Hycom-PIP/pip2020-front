@@ -20,9 +20,7 @@
         name: "DayChooseComponent",
         data: function () {
 
-            const now = new Date();
-            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-            const maxDate = new Date(today);
+            const maxDate = new Date();
             maxDate.setDate(maxDate.getDate() - 1);
 
             return {
@@ -40,7 +38,8 @@
                 this.$root.$emit('showDayHistory', [this.context.selectedFormatted, this.context.activeYMD]);
             },
             onContext(ctx) {
-                this.context = ctx
+                this.context = ctx;
+                this.labels.labelNoDateSelected = this.context.activeFormatted
             }
         }
     }
