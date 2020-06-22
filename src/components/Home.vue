@@ -80,7 +80,7 @@
     }
 
     .app-logo {
-        padding-left: 2%;
+        padding-left: 1%;
         color:white;
         font-size: 55px;
     }
