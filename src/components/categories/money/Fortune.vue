@@ -94,7 +94,6 @@
             });
             this.$root.$on('showCurrency', (currency) => this.showAnotherCurrency(currency));
             this.$root.$on('chooseExchange', (exchange) => this.showExchangeAndButtons(exchange));
-            this.$root.$on('showActualData', () => this.showActualData());
             this.$root.$on('showFutureData', () => this.showFutureData());
             this.$root.$on('showHistoryData', () => this.showHistoryData());
             this.$root.$on('showDayHistory', (data) => this.showHistoryDataForDay(data));
@@ -133,8 +132,16 @@
                     this.symbol = `${this.symbol}/${currency}`;
                     sendMessage(this, "user",
                         `${this.$t('fortune.user.chosenCurrency')} ${currency}`).then(() => {
-                        sendMessage(this, "bot", this.$t('fortune.bot.chooseTime')).then(() => {
-                            this.showTimeButtons = true;
+                        fortuneService.getActualDataForSymbol(this.symbol, formatter.formatDate(Date.now())).then(response => {
+                            if (response.ok) {
+                                sendMessage(this, "bot",
+                                    `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}`).then(() => {
+                                    sendMessage(this, "bot", this.$t('fortune.bot.chooseTime')).then(() => {
+                                        this.showTimeButtons = true;
+                                    })
+                                })
+                            } else
+                                sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
                         })
                     })
                 }
@@ -143,8 +150,16 @@
                 this.showExchanges = false;
                 this.symbol = exchange.symbol;
                 sendMessage(this, "user", `${this.$t('fortune.user.chosenExchange')} ${exchange.name}`).then(() => {
-                    sendMessage(this, "bot", this.$t('fortune.bot.chooseTime')).then(() => {
-                        this.showTimeButtons = true;
+                    fortuneService.getActualDataForSymbol(this.symbol, formatter.formatDate(Date.now())).then(response => {
+                        if (response.ok) {
+                            sendMessage(this, "bot",
+                                `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}`).then(() => {
+                                sendMessage(this, "bot", this.$t('fortune.bot.chooseTime')).then(() => {
+                                    this.showTimeButtons = true;
+                                })
+                            })
+                        } else
+                            sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
                     })
                 })
             },
@@ -169,22 +184,6 @@
                 sendMessage(this, "user", `${this.$t('fortune.user.chosenPeriod')}`).then(() => {
                     sendMessage(this, "bot", this.$t('fortune.bot.periodChoice')).then(() => {
                         this.showPeriodChooser = true;
-                    });
-                })
-            },
-            showActualData() {
-                this.showTimeButtons = false;
-                sendMessage(this, "user", `${this.$t('fortune.user.chosenActual')}`).then(() => {
-                    sendMessage(this, "bot", this.$t('fortune.bot.actualData')).then(() => {
-                        fortuneService.getActualDataForSymbol(this.symbol, formatter.formatDate(Date.now()))
-                            .then(response => {
-                                if (response.ok) {
-                                    sendMessage(this, "bot",
-                                        `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}`)
-                                } else {
-                                    sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
-                                }
-                            })
                     });
                 })
             },

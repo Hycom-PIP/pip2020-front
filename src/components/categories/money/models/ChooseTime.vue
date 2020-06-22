@@ -3,9 +3,6 @@
         <b-button class="m-2" v-on:click="history" v-bind:class="themeService.getActiveTheme().themeName">
             {{$t('fortune.buttons.history')}}
         </b-button>
-        <b-button class="m-2" v-on:click="actual" v-bind:class="themeService.getActiveTheme().themeName">
-            {{$t('fortune.buttons.actual')}}
-        </b-button>
         <b-button class="m-2" v-on:click="future" v-bind:class="themeService.getActiveTheme().themeName">
             {{$t('fortune.buttons.future')}}
         </b-button>
@@ -29,9 +26,6 @@
         methods: {
             history() {
                 this.$root.$emit('showHistoryData')
-            },
-            actual() {
-                this.$root.$emit('showActualData')
             },
             future() {
                 this.$root.$emit('showFutureData')
