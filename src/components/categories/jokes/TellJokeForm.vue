@@ -1,7 +1,7 @@
 <template>
     <div>
         <JokesCategoryChooser v-if="showCategories" v-on:chooseCategory="saveCategory($event)"></JokesCategoryChooser>
-        <b-form @submit="saveJoke" v-if="!showCategories" @submit.prevent>
+        <b-form @submit.prevent="saveJoke" v-if="!showCategories">
             <b-form-input v-model="joke"
                           type="text"
                           required
