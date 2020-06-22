@@ -1,13 +1,13 @@
 <template>
     <div>
         <JokesCategoryChooser v-if="showCategories" v-on:chooseCategory="saveCategory($event)"></JokesCategoryChooser>
-        <b-form @submit.prevent="saveJoke" v-if="!showCategories">
+        <b-form @submit="saveJoke" v-if="!showCategories">
             <b-form-input v-model="joke"
                           type="text"
                           required
                           :placeholder="$t('jokes.user.tellJokePlaceholder')">
             </b-form-input>
-            <b-button type="submit" variant="primary">{{ $t('jokes.user.addJokeButton') }}</b-button>
+            <b-button type="submit" variant="primary" class="mt-1">{{ $t('jokes.user.addJokeButton') }}</b-button>
         </b-form>
     </div>
 </template>
