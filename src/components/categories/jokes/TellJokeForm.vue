@@ -8,7 +8,7 @@
                             required
                             :placeholder="$t('jokes.user.tellJokePlaceholder')">
             </b-form-textarea>
-            <b-button type="submit" variant="primary" class="mt-1">{{ $t('jokes.user.addJokeButton') }}</b-button>
+            <b-button type="submit" variant="primary" class="mt-2">{{ $t('jokes.user.addJokeButton') }}</b-button>
         </b-form>
     </div>
 </template>
