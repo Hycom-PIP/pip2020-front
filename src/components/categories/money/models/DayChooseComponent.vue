@@ -1,6 +1,6 @@
 <template>
     <div id="calendar">
-        <b-calendar class="calendar" @context="onContext" value-as-date locale="pl-PL"
+        <b-calendar class="calendar" @context="onContext" :max="max" value-as-date locale="pl-PL"
                     v-bind="labels">
             <div class="d-flex" dir="ltr">
                 <b-button
@@ -19,11 +19,16 @@
     export default {
         name: "DayChooseComponent",
         data: function () {
+
+            const maxDate = new Date();
+            maxDate.setDate(maxDate.getDate() - 1);
+
             return {
                 context: null,
                 labels: {
                     labelNoDateSelected: this.$t('errors.wrongDate'),
-                }
+                },
+                max: maxDate,
             }
         },
         mounted() {
@@ -33,7 +38,8 @@
                 this.$root.$emit('showDayHistory', [this.context.selectedFormatted, this.context.activeYMD]);
             },
             onContext(ctx) {
-                this.context = ctx
+                this.context = ctx;
+                this.labels.labelNoDateSelected = this.context.activeFormatted
             }
         }
     }

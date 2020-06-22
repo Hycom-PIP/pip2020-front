@@ -1,23 +1,20 @@
-<template>
-    <div class="history-data-component">
-    </div>
-</template>
-
 <script>
+    import { fortuneService } from '../../../../App'
+    import { sendMessage } from "../../../common/messages"
+
     export default {
         name: "HistoryData",
         props: ['stocks'],
-        data: function(){
-            return{
 
+        created: function() {
+            if (this.stocks && this.stocks.length) {
+                let chartData = fortuneService.toChartData(this.stocks)
+                sendMessage(this.$parent, 'bot', chartData, 'historyChart')
             }
-        },
-        mounted() {
-        },
-        methods:{
+            
+            else {
+                sendMessage(this.$parent, 'bot', this.$t('fortune.bot.noData'))
+            }
         }
     }
 </script>
-
-<style scoped>
-</style>

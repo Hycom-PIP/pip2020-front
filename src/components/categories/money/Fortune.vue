@@ -55,10 +55,8 @@
     import PeriodChooseComponent from "./models/PeriodChooseComponent"
     import HistoryData from "./models/HistoryData";
     import FutureData from "./models/FutureData";
-    import {fortuneService} from "../../../App";
+    import {formatter, fortuneService, themeService} from "../../../App";
     import {sendMessage} from "../../common/messages";
-    import {formatter} from "../../../App";
-    import {themeService} from "../../../App";
 
     export default {
         name: 'Fortune',
@@ -204,18 +202,24 @@
             showHistoryDataForDay(data) {
                 this.showDayChooser = false;
                 sendMessage(this, "user", `${this.$t('fortune.user.myChoice')} ${data[0]}`).then(() => {
-                    fortuneService.getHistoryDataForSymbol(this.symbol, formatter).then(response => {
-                        sendMessage(this, "bot",
-                            `${this.$t('fortune.bot.valueStockInDay')} ${data[0]} ${this.$t('fortune.bot.value')} ${response.value}`)
+                    fortuneService.getHistoryDataForSymbol(this.symbol, data[1]).then(response => {
+                        if (response.ok) {
+                            sendMessage(this, "bot",
+                                `${this.$t('fortune.bot.valueStockInDay')} ${data[0]} ${this.$t('fortune.bot.value')} ${response.value}`)
+                        } else {
+                            sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
+                        }
                     })
-                });
+                })
             },
             showHistoryDataForPeriod(data) {
                 this.showPeriodChooser = false;
                 sendMessage(this, "user",
                     `${this.$t('fortune.user.myChoice')} ${new Date(data[0]).toLocaleDateString()} ${this.$t('fortune.user.to')} ${new Date(data[1]).toLocaleDateString()}`,
                 ).then(() => {
-                    sendMessage(this, "bot", this.$t('fortune.bot.historyData')).then(() => {
+                    sendMessage(this, "bot", 
+                        `${this.$t('fortune.bot.historyData')} ${new Date(data[0]).toLocaleDateString()} ${this.$t('fortune.user.to')} ${new Date(data[1]).toLocaleDateString()}`
+                    ).then(() => {
                         fortuneService.getHistoryDataForSymbolForPeriod(this.symbol, formatter.formatDate(data[0]), formatter.formatDate(data[1]))
                             .then(response => {
                                 this.data = response;

@@ -1,14 +1,14 @@
 export default class ThemeService {
-    constructor(){
-        this.themes= [
-         {
-                themeName: "light",
-                imageSource: require('../../assets/skin_light.svg'),
-                isActiveTheme: false
-            }, {
+    constructor() {
+        this.themes = [
+            {
                 themeName: "blue",
                 imageSource: require('../../assets/skin_gradient.svg'),
                 isActiveTheme: true
+            }, {
+                themeName: "light",
+                imageSource: require('../../assets/skin_light.svg'),
+                isActiveTheme: false
             }, {
                 themeName: "dark",
                 imageSource: require('../../assets/skin_dark.svg'),
@@ -24,11 +24,11 @@ export default class ThemeService {
         this.themes[themeIndex].isActiveTheme = true;
     }
 
-    getAllThemes(){
+    getAllThemes() {
         return this.themes;
     }
 
-    getActiveTheme(){
+    getActiveTheme() {
         for (let theme of this.themes) {
             if (theme.isActiveTheme) {
                 return theme;
