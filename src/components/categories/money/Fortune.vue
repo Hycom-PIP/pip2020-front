@@ -14,10 +14,10 @@
             <ExchangeDropdown v-if="showExchanges"/>
         </transition>
         <transition name="button-dropdown-slide">
-            <CurrencyDropdown v-if="showCurrencies"/>
+            <CurrencyDropdown v-if="showCurrencies" v-bind:currencies="currencies"/>
         </transition>
         <transition name="button-dropdown-slide">
-            <CurrencyDropdown v-if="showAnotherCurrencies"/>
+            <CurrencyDropdown v-if="showAnotherCurrencies" v-bind:currencies="currencies"/>
         </transition>
         <transition name="button-dropdown-slide">
             <ChooseTime v-if="showTimeButtons"/>
@@ -82,8 +82,8 @@
                 showHistoryDataComponent: false,
                 data: null,
                 themeService,
-                disabled: false
-
+                disabled: false,
+                currencies: []
             }
         },
         created() {
@@ -115,12 +115,14 @@
                     sendMessage(this, "bot", this.$t('fortune.bot.currency')).then(() => {
                         this.showCurrencies = true;
                     })
-                })
+                });
+                fortuneService.getAllCurrencies().then(result => this.currencies = result)
             },
             showAnotherCurrency(currency) {
                 if (this.symbol === null) {
                     this.symbol = currency;
                     this.showCurrencies = false;
+                    this.currencies = this.currencies.filter(e => e !== currency);
                     sendMessage(this, "user",
                         `${this.$t('fortune.user.chosenCurrency')} ${currency}`).then(() => {
                         sendMessage(this, "bot", this.$t('fortune.bot.anotherCurrency')).then(() => {
@@ -129,7 +131,7 @@
                     })
                 } else {
                     this.showAnotherCurrencies = false;
-                    this.symbol = `${this.symbol}/${currency}`;
+                    this.symbol = `${this.symbol}${currency}=X`;
                     sendMessage(this, "user",
                         `${this.$t('fortune.user.chosenCurrency')} ${currency}`).then(() => {
                         fortuneService.getActualDataForSymbol(this.symbol, formatter.formatDate(Date.now())).then(response => {
