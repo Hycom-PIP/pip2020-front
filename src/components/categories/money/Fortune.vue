@@ -55,10 +55,8 @@
     import PeriodChooseComponent from "./models/PeriodChooseComponent"
     import HistoryData from "./models/HistoryData";
     import FutureData from "./models/FutureData";
-    import {fortuneService} from "../../../App";
+    import {formatter, fortuneService, themeService} from "../../../App";
     import {sendMessage} from "../../common/messages";
-    import {formatter} from "../../../App";
-    import {themeService} from "../../../App";
 
     export default {
         name: 'Fortune',
@@ -180,8 +178,12 @@
                     sendMessage(this, "bot", this.$t('fortune.bot.actualData')).then(() => {
                         fortuneService.getActualDataForSymbol(this.symbol, formatter.formatDate(Date.now()))
                             .then(response => {
-                                sendMessage(this, "bot",
-                                    `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}`)
+                                if (response.ok) {
+                                    sendMessage(this, "bot",
+                                        `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}`)
+                                } else {
+                                    sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
+                                }
                             })
                     });
                 })
@@ -201,11 +203,15 @@
             showHistoryDataForDay(data) {
                 this.showDayChooser = false;
                 sendMessage(this, "user", `${this.$t('fortune.user.myChoice')} ${data[0]}`).then(() => {
-                    fortuneService.getHistoryDataForSymbol(this.symbol, formatter).then(response => {
-                        sendMessage(this, "bot",
-                            `${this.$t('fortune.bot.valueStockInDay')} ${data[0]} ${this.$t('fortune.bot.value')} ${response.value}`)
+                    fortuneService.getHistoryDataForSymbol(this.symbol, data[1]).then(response => {
+                        if (response.ok) {
+                            sendMessage(this, "bot",
+                                `${this.$t('fortune.bot.valueStockInDay')} ${data[0]} ${this.$t('fortune.bot.value')} ${response.value}`)
+                        } else {
+                            sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
+                        }
                     })
-                });
+                })
             },
             showHistoryDataForPeriod(data) {
                 this.showPeriodChooser = false;
