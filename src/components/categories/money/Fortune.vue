@@ -135,13 +135,16 @@
                     sendMessage(this, "user",
                         `${this.$t('fortune.user.chosenCurrency')} ${currency}`).then(() => {
                         fortuneService.getActualDataForSymbol(this.symbol, formatter.formatDate(Date.now())).then(response => {
+                            if (response.ok) {
                                 sendMessage(this, "bot",
                                     `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}`).then(() => {
                                     sendMessage(this, "bot", this.$t('fortune.bot.chooseTime')).then(() => {
                                         this.showTimeButtons = true;
                                     })
                                 })
-                            })
+                            } else
+                                sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
+                        })
                     })
                 }
             },
@@ -150,12 +153,15 @@
                 this.symbol = exchange.symbol;
                 sendMessage(this, "user", `${this.$t('fortune.user.chosenExchange')} ${exchange.name}`).then(() => {
                     fortuneService.getActualDataForSymbol(this.symbol, formatter.formatDate(Date.now())).then(response => {
-                        sendMessage(this, "bot",
-                            `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}`).then(() => {
-                            sendMessage(this, "bot", this.$t('fortune.bot.chooseTime')).then(() => {
-                                this.showTimeButtons = true;
+                        if (response.ok) {
+                            sendMessage(this, "bot",
+                                `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}`).then(() => {
+                                sendMessage(this, "bot", this.$t('fortune.bot.chooseTime')).then(() => {
+                                    this.showTimeButtons = true;
+                                })
                             })
-                        })
+                        } else
+                            sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
                     })
                 })
             },
