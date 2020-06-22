@@ -6,7 +6,7 @@
     export default {
         name: "chart",
         extends: Line,
-        props: ['chartData'],
+        props: ['chartData', 'currency'],
 
         data() {
             return {
@@ -44,9 +44,20 @@
 
                         yAxes: [{
                             ticks: {
-                                fontColor: ''
+                                fontColor: '',
+                                callback: (value) => {
+                                    return `${value} ${this.currency}`
+                                }
                             }
                         }]
+                    },
+                    tooltips: {
+                        enabled: true,
+                        callbacks: {
+                            label: ((tooltipItem) => {
+                                return `${tooltipItem.yLabel} ${this.currency}`
+                            })
+                        }
                     }
                 }
             }
@@ -54,24 +65,6 @@
 
         created() {
             moment.locale('pl')
-
-            let fontColor
-            let theme = themeService.getActiveTheme().themeName
-
-            if (theme == 'dark') {
-                fontColor = '#ffffff'
-            }
-
-            else if (theme == 'blue') {
-                fontColor = '#ffffff'
-            }
-            
-            else if (theme == 'light') {
-                fontColor = '#000000'
-            }
-
-            console.log('start: ' + fontColor)
-            
             this.setColor()
 
             setInterval(() => {
@@ -102,7 +95,6 @@
             },
 
             setColor() {
-                console.log(this.getColor())
                 this.options.scales.xAxes[0].ticks.fontColor = this.getColor()
                 this.options.scales.yAxes[0].ticks.fontColor = this.getColor()
                 this.options.legend.labels.fontColor = this.getColor()

@@ -9,7 +9,7 @@
         created: function() {
             if (this.stocks && this.stocks.length) {
                 let chartData = fortuneService.toChartData(this.stocks)
-                sendMessage(this.$parent, 'bot', chartData, 'chart')
+                sendMessage(this.$parent, 'bot', chartData, 'historyChart')
             }
             
             else {
