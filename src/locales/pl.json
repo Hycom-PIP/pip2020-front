@@ -314,7 +314,8 @@
       "value": "była równa: ",
       "isValue": "jest równa: ",
       "nonExistingData": "Niestety nie posiadam danych z tego dnia, musisz wybrać inny",
-      "noData": "Oj. Nie mogę pobrać danych."
+      "noData": "Oj. Nie mogę pobrać danych.",
+      "usd": "$"
     },
     "buttons": {
       "currency": "Waluta",

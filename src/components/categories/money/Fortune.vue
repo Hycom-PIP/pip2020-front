@@ -167,7 +167,7 @@
                     fortuneService.getActualDataForSymbol(this.symbol).then(response => {
                         if (!response.errors) {
                             sendMessage(this, "bot",
-                                `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}`).then(() => {
+                                `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}${this.$t('fortune.bot.usd')}`).then(() => {
                                 sendMessage(this, "bot", this.$t('fortune.bot.chooseTime')).then(() => {
                                     this.showTimeButtons = true;
                                 })
