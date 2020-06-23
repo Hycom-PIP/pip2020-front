@@ -118,8 +118,8 @@
     --chat-button-active-dark-theme-border-color: #000000;
     --chat-button-active-blue-theme-border-color: #00e6b8;
 
-    --chat-box-animate-long-delay: 800;
-    --chat-box-animate-short-delay: 500;
+    --chat-box-animate-long-delay: 1500;
+    --chat-box-animate-short-delay: 1000;
 
     --admin-joke-item-bg-color: #fff;
     --admin-joke-item-color: #373737;
@@ -247,8 +247,4 @@ html, body {
 .button-dropdown-slide-enter{
     transform: translateX(10px);
     opacity: 0;
-}
-
-.end-buttons {
-    text-align: right;
 }
