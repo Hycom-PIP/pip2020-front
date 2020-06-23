@@ -15,10 +15,10 @@
                 <JokesMessage v-bind:data="message.data" v-else-if="message.style === 'jokesMessage'"></JokesMessage>
                 <RestaurantMessage v-bind:data="message.data" v-else-if="message.style === 'restaurantMessage'"/>
                 <div class="chart-component" v-if="message.style === 'historyChart'">
-                    <Chart :width="'2000px'" :chartData="message.data" :currency="'USD'"></chart>
+                    <Chart :width="'2000px'" :chartData="message.data" :currency="message.data.passedCurrency"></chart>
                 </div>
                 <div class="chart-component" v-else-if="message.style === 'futureChart'">
-                    <Chart :width="'2000px'" :chartData="message.data" :currency="'USD'"></chart>
+                    <Chart :width="'2000px'" :chartData="message.data" :currency="message.data.passedCurrency"></chart>
                 </div>
                 <ChatBoxAnimation  v-bind:data-with="message.author"
                                   v-if="index === lastMessageIndex && messageAnimate" />

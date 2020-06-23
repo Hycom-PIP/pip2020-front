@@ -40,8 +40,8 @@
         </transition>
         <transition name="button-picker-slide">
             <div>
-                <HistoryData :stocks="this.data" v-if="showHistoryDataComponent"/>
-                <FutureData :stocks="this.data" v-if="showFutureDataComponent"/>
+                <HistoryData :stocks="this.data" :currency="passedCurrency" v-if="showHistoryDataComponent"/>
+                <FutureData :stocks="this.data" :currency="passedCurrency" v-if="showFutureDataComponent"/>
             </div>
         </transition>
     </div>
@@ -83,7 +83,8 @@
                 data: null,
                 themeService,
                 disabled: false,
-                currencies: []
+                currencies: [],
+                passedCurrency: ''
             }
         },
         created() {
@@ -105,6 +106,7 @@
                 sendMessage(this, "user", this.$t('fortune.user.exchange')).then(() => {
                     sendMessage(this, "bot", this.$t('fortune.bot.exchange')).then(() => {
                         this.showExchanges = true;
+                        this.passedCurrency = 'USD';
                     })
                 })
             },

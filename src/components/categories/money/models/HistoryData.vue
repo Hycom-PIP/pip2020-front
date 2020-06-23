@@ -4,11 +4,12 @@
 
     export default {
         name: "HistoryData",
-        props: ['stocks'],
+        props: ['stocks', 'currency'],
 
         created: function() {
             if (this.stocks && this.stocks.length) {
                 let chartData = fortuneService.toChartData(this.stocks)
+                chartData.passedCurrency = this.currency
                 sendMessage(this.$parent, 'bot', chartData, 'historyChart')
             }
             
