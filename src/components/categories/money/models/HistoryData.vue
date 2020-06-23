@@ -6,13 +6,13 @@
         name: "HistoryData",
         props: ['stocks', 'currency'],
 
-        created: function() {
-            if (this.stocks && this.stocks.length) {
+        created() {
+            if (this.stocks) {
                 let chartData = fortuneService.toChartData(this.stocks)
                 chartData.passedCurrency = this.currency
                 sendMessage(this.$parent, 'bot', chartData, 'historyChart')
             }
-            
+
             else {
                 sendMessage(this.$parent, 'bot', this.$t('fortune.bot.noData'))
             }
