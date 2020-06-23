@@ -127,6 +127,7 @@ export default {
   },
   methods: {
     showExchange() {
+      this.isCurrency = false;
       this.exchangeCurrencyButtons = false;
       sendMessage(this, "user", this.$t("fortune.user.exchange")).then(() => {
         sendMessage(this, "bot", this.$t("fortune.bot.exchange")).then(() => {
@@ -173,12 +174,16 @@ export default {
                 )
               );
             } else {
+              const baseMessage = this.isCurrency
+                ? this.$t("fortune.bot.valueCurrencyToday")
+                : this.$t("fortune.bot.valueStockToday");
+              const unit = this.isCurrency ? "" : this.$t("fortune.bot.usd");
               sendMessage(
                 this,
                 "bot",
-                `${this.$t("fortune.bot.valueStockToday")} ${this.$t(
-                  "fortune.bot.isValue"
-                )} ${response.value}${this.$t('fortune.bot.usd')}`
+                `${baseMessage} ${this.$t("fortune.bot.isValue")} ${
+                  response.value
+                }${unit}`
               ).then(() => {
                 sendMessage(
                   this,
@@ -207,12 +212,16 @@ export default {
               )
             );
           } else {
+            const baseMessage = this.isCurrency
+              ? this.$t("fortune.bot.valueCurrencyToday")
+              : this.$t("fortune.bot.valueStockToday");
+            const unit = this.isCurrency ? "" : this.$t("fortune.bot.usd");
             sendMessage(
               this,
               "bot",
-              `${this.$t("fortune.bot.valueStockToday")} ${this.$t(
-                "fortune.bot.isValue"
-              )} ${response.value}${this.$t('fortune.bot.usd')}`
+              `${baseMessage} ${this.$t("fortune.bot.isValue")} ${
+                response.value
+              }${unit}`
             ).then(() => {
               sendMessage(this, "bot", this.$t("fortune.bot.chooseTime")).then(
                 () => {
@@ -263,29 +272,30 @@ export default {
       );
     },
     showFutureData() {
+      const futureMessage = this.isCurrency
+        ? this.$t("fortune.bot.currencyFutureData")
+        : this.$t("fortune.bot.futureData");
       this.showTimeButtons = false;
       sendMessage(this, "user", `${this.$t("fortune.user.chosenFuture")}`).then(
         () => {
-          sendMessage(this, "bot", this.$t("fortune.bot.futureData")).then(
-            () => {
-              fortuneService
-                .getFutureDataForSymbol(this.symbol)
-                .then(response => {
-                  if (response.errors) {
-                    this.endCategoryAfter(
-                      sendMessage(
-                        this,
-                        "bot",
-                        `${this.$t("fortune.bot.nonExistingData")}`
-                      )
-                    );
-                  } else {
-                    this.data = response;
-                    this.showFutureDataComponent = true;
-                  }
-                });
-            }
-          );
+          sendMessage(this, "bot", futureMessage).then(() => {
+            fortuneService
+              .getFutureDataForSymbol(this.symbol)
+              .then(response => {
+                if (response.errors) {
+                  this.endCategoryAfter(
+                    sendMessage(
+                      this,
+                      "bot",
+                      `${this.$t("fortune.bot.nonExistingData")}`
+                    )
+                  );
+                } else {
+                  this.data = response;
+                  this.showFutureDataComponent = true;
+                }
+              });
+          });
         }
       );
     },
@@ -304,13 +314,17 @@ export default {
                 )
               );
             } else {
+              const baseMessage = this.isCurrency
+                ? this.$t("fortune.bot.valueCurrencyInDay")
+                : this.$t("fortune.bot.valueStockInDay");
+              const unit = this.isCurrency ? "" : this.$t("fortune.bot.usd");
               this.endCategoryAfter(
                 sendMessage(
                   this,
                   "bot",
-                  `${this.$t("fortune.bot.valueStockInDay")} ${
-                    data[0]
-                  } ${this.$t("fortune.bot.value")} ${response.value}${this.$t('fortune.bot.usd')}`
+                  `${baseMessage} ${data[0]} ${this.$t("fortune.bot.value")} ${
+                    response.value
+                  }${unit}`
                 )
               );
             }

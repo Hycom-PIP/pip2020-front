@@ -304,6 +304,7 @@
       "chooseTime": "Z jakiego okresu chcesz dane?",
       "actualData": "Oto aktualne ceny akcji: ",
       "futureData": "Oto prognoza cen akcji: ",
+      "currencyFutureData": "Oto prognoza kursu:",
       "historyData": "Oto historyczne ceny akcji dla okresu ",
       "historyDataDay": "Oto historyczne dane cen akcji dla wybranego dnia: ",
       "historyChoice": "Interesuje Cię jakiś konkretny dzień czy dłuższy okres czasu?",
@@ -311,11 +312,13 @@
       "periodChoice": "Świetnie! Wybierz dzień z kalendarza, a ja zaraz przedstawię Ci wszystkie istotne informacje 💲",
       "valueStockInDay": "Wartośc akcji w dniu",
       "valueStockToday": "Wartośc obecna akcji",
+      "valueCurrencyInDay": "Wartośc kursu w dniu",
+      "valueCurrencyToday": "Wartośc obecna kursu",
       "value": "była równa: ",
       "isValue": "jest równa: ",
       "nonExistingData": "Niestety nie posiadam danych z tego dnia, musisz wybrać inny",
       "noData": "Oj. Nie mogę pobrać danych.",
-      "ending": "Czy chciałbyś o czymś jeszcze porozmawiać?",
+      "ending": "Jest coś jeszcze, co mogę dla Ciebie zrobić?",
       "usd": "$"
     },
     "buttons": {
