@@ -118,8 +118,8 @@
     --chat-button-active-dark-theme-border-color: #000000;
     --chat-button-active-blue-theme-border-color: #00e6b8;
 
-    --chat-box-animate-long-delay: 2000;
-    --chat-box-animate-short-delay: 1200;
+    --chat-box-animate-long-delay: 1500;
+    --chat-box-animate-short-delay: 1000;
 
     --admin-joke-item-bg-color: #fff;
     --admin-joke-item-color: #373737;

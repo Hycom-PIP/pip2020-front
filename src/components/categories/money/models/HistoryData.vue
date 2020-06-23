@@ -1,20 +1,19 @@
 <script>
-    import { fortuneService } from '../../../../App'
-    import { sendMessage } from "../../../common/messages"
+import { fortuneService } from "../../../../App";
+import { sendMessage } from "../../../common/messages";
 
-    export default {
-        name: "HistoryData",
-        props: ['stocks'],
+export default {
+  name: "HistoryData",
+  props: ["stocks", "currency"],
 
-        created: function() {
-            if (this.stocks && this.stocks.length) {
-                let chartData = fortuneService.toChartData(this.stocks)
-                sendMessage(this.$parent, 'bot', chartData, 'historyChart')
-            }
-            
-            else {
-                sendMessage(this.$parent, 'bot', this.$t('fortune.bot.noData'))
-            }
-        }
+  mounted() {
+    if (this.stocks) {
+      let chartData = fortuneService.toChartData(this.stocks);
+      chartData.passedCurrency = this.currency;
+      sendMessage(this.$parent, "bot", chartData, "historyChart");
+    } else {
+      sendMessage(this.$parent, "bot", this.$t("fortune.bot.noData"));
     }
+  }
+};
 </script>

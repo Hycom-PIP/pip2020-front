@@ -26,6 +26,14 @@
                             <router-link :to="{ name: 'admin-jokes'}"><b-button class="card-button">{{ $t('adminHome.categories.button')}}</b-button></router-link>
                         </b-card>
                     </b-col>
+                    <b-col>
+                        <b-card
+                                :title="$t('adminHome.categories.fortune')"
+                                class="mb-2"
+                        >
+                            <router-link :to="{ name: 'admin-fortune'}"><b-button class="card-button">{{ $t('adminHome.categories.button')}}</b-button></router-link>
+                        </b-card>
+                    </b-col>
                 </b-row>
             </b-container>
         </div>
