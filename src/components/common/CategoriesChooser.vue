@@ -4,6 +4,7 @@
                   v-for="(category, index) in categories" v-bind:key="index"
                   v-on:click="chooseCategory(category.eventName)">
             {{category.categoryName}}
+            <b-icon v-bind:icon=category.categoryIcon aria-hidden="true"></b-icon>
         </b-button>
     </div>
 </template>
@@ -18,19 +19,23 @@
                 categories: [
                     {
                         categoryName: this.$t('bot.categoryWeather'),
-                        eventName: 'weather'
+                        eventName: 'weather',
+                        categoryIcon: 'cloud'
                     },
                     {
                         categoryName: this.$t('bot.categoryJokes'),
-                        eventName: 'jokes'
+                        eventName: 'jokes',
+                        categoryIcon: 'chat'
                     },
                     {
                         categoryName: this.$t('bot.categoryRestaurants'),
-                        eventName: 'restaurant'
+                        eventName: 'restaurant',
+                        categoryIcon: 'credit-card'
                     },
                     {
                         categoryName: this.$t('bot.categoryFortune'),
-                        eventName: 'fortune'
+                        eventName: 'fortune',
+                        categoryIcon: 'graph-up'
                     }
                 ],
                 themeService
@@ -59,7 +64,7 @@
         margin-right: 20px;
         margin-bottom: 10px;
         font-size: 25px;
-        width: 200px;
+        width: 220px;
     }
 
     button {
