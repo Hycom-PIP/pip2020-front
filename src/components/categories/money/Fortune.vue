@@ -178,7 +178,7 @@ export default {
                 "bot",
                 `${this.$t("fortune.bot.valueStockToday")} ${this.$t(
                   "fortune.bot.isValue"
-                )} ${response.value}`
+                )} ${response.value}${this.$t('fortune.bot.usd')}`
               ).then(() => {
                 sendMessage(
                   this,
@@ -212,7 +212,7 @@ export default {
               "bot",
               `${this.$t("fortune.bot.valueStockToday")} ${this.$t(
                 "fortune.bot.isValue"
-              )} ${response.value}`
+              )} ${response.value}${this.$t('fortune.bot.usd')}`
             ).then(() => {
               sendMessage(this, "bot", this.$t("fortune.bot.chooseTime")).then(
                 () => {
@@ -310,7 +310,7 @@ export default {
                   "bot",
                   `${this.$t("fortune.bot.valueStockInDay")} ${
                     data[0]
-                  } ${this.$t("fortune.bot.value")} ${response.value}`
+                  } ${this.$t("fortune.bot.value")} ${response.value}${this.$t('fortune.bot.usd')}`
                 )
               );
             }
