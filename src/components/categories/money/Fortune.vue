@@ -207,9 +207,7 @@
                 this.showTimeButtons = false;
                 sendMessage(this, "user", `${this.$t('fortune.user.chosenFuture')}`).then(() => {
                     sendMessage(this, "bot", this.$t('fortune.bot.futureData')).then(() => {
-                        this.showFutureDataComponent = true;
                         fortuneService.getFutureDataForSymbol(this.symbol).then(response => {
-                            console.log("Backend", response);
                             this.data = response;
                             this.showFutureDataComponent = true;
                         })
