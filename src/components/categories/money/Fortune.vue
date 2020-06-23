@@ -139,19 +139,19 @@
                     this.symbol = `${this.symbol}${currency}=X`;
                     sendMessage(this, "user",
                         `${this.$t('fortune.user.chosenCurrency')} ${currency}`).then(() => {
-                        fortuneService.getActualDataForSymbol(this.symbol, formatter.formatDate(Date.now())).then(response => {
-                            if (response.ok) {
-                                sendMessage(this, "bot",
-                                    `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}`).then(() => {
-                                    sendMessage(this, "bot", this.$t('fortune.bot.chooseTime')).then(() => {
-                                        this.showTimeButtons = true;
-                                    })
-                                })
-                            } else {
-                                sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
-                                this.showCategoryEnding();
-                            }
-                        })
+                        fortuneService.getActualDataForSymbol(this.symbol)
+                            .then(response => {
+                                if (!response.errors) {
+                                    sendMessage(this, "bot",
+                                        `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}`)
+                                        .then(() => {
+                                            sendMessage(this, "bot", this.$t('fortune.bot.chooseTime')).then(() => {
+                                                this.showTimeButtons = true;
+                                            })
+                                        })
+                                } else
+                                    sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
+                            })
                     })
                 }
             },
@@ -159,8 +159,8 @@
                 this.showExchanges = false;
                 this.symbol = exchange.symbol;
                 sendMessage(this, "user", `${this.$t('fortune.user.chosenExchange')} ${exchange.name}`).then(() => {
-                    fortuneService.getActualDataForSymbol(this.symbol, formatter.formatDate(Date.now())).then(response => {
-                        if (response.ok) {
+                    fortuneService.getActualDataForSymbol(this.symbol).then(response => {
+                        if (!response.errors) {
                             sendMessage(this, "bot",
                                 `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}`).then(() => {
                                 sendMessage(this, "bot", this.$t('fortune.bot.chooseTime')).then(() => {
@@ -214,7 +214,7 @@
                 this.showDayChooser = false;
                 sendMessage(this, "user", data[0]).then(() => {
                     fortuneService.getHistoryDataForSymbol(this.symbol, data[1]).then(response => {
-                        if (response.ok) {
+                        if (response) {
                             sendMessage(this, "bot",
                                 `${this.$t('fortune.bot.valueStockInDay')} ${data[0]} ${this.$t('fortune.bot.value')} ${response.value}`)
                         } else {
@@ -229,7 +229,7 @@
                 sendMessage(this, "user",
                     `${this.$t('fortune.user.myChoice')} ${new Date(data[0]).toLocaleDateString()} ${this.$t('fortune.user.to')} ${new Date(data[1]).toLocaleDateString()}`,
                 ).then(() => {
-                    sendMessage(this, "bot", 
+                    sendMessage(this, "bot",
                         `${this.$t('fortune.bot.historyData')} ${new Date(data[0]).toLocaleDateString()} ${this.$t('fortune.user.to')} ${new Date(data[1]).toLocaleDateString()}`
                     ).then(() => {
                         fortuneService.getHistoryDataForSymbolForPeriod(this.symbol, formatter.formatDate(data[0]), formatter.formatDate(data[1]))

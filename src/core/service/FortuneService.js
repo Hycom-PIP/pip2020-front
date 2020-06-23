@@ -19,8 +19,8 @@ export default class FortuneService {
         return this.httpRequest.get(`stocks/period/${symbol}?startDateParam=${dataStart}&endDateParam=${dataEnd}`);
     }
 
-    getActualDataForSymbol(symbol,data){
-        return this.httpRequest.get(`stocks/${symbol}?dateParam=${data}`);
+    getActualDataForSymbol(symbol){
+        return this.httpRequest.get(`stocks/actual/${symbol}`);
     }
 
     getFutureDataForSymbol(symbol){
