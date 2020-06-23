@@ -10,17 +10,19 @@
     "categoryFortune": "Złotówa"
   },
   "user": {
-    "city": "Wybór miasta",
+    "city": "Wybierz miasto",
     "myChoice": "Wybieram "
   },
   "weather": {
     "bot": {
-      "introduction": "Super! A w jakim chcesz mieście?",
-      "choiceTime" : "Swietnie ! Wybierz teraz czas!",
-      "myPredictions": "Swietnie! Oto moje przewidywania dla ",
-      "in": " w ",
-      "couldHelp": "Cieszę się że mogłem pomóc :D ",
-      "anythingToDo": "Jest coś co jeszcze mogę dla ciebie zrobić?",
+      "introduction1": "Dobrze trafiłeś! Mam pod ręką same sprawdzone prognozy 🤠",
+      "introduction2": "Podpytam Cię jeszcze tylko o dwa detale...",
+      "introduction3": "Dla jakiego miasta chcesz poznać prognozę? 🤔",
+      "choiceTime": "Świetnie! Podaj jeszcze datę i już serwuję Ci najświeższe dane! 😇",
+      "myPredictions": "Oto moje przewidywania dla miasta ",
+      "onDay": " na dzień ",
+      "couldHelp": "Cieszę się, że mogłem pomóc 😀",
+      "anythingToDo": "Jest coś jeszcze, co mogę dla Ciebie zrobić?",
       "temperature": "Temperatura",
       "perceivedTemperature": "Odczuwalna temperatura: ",
       "precipType": "Zachmurzenie",
@@ -29,11 +31,11 @@
       "airSpeed": "Prędkość wiatru"
     },
     "user": {
-      "choiceWeather": "Chciałbym poznać pogodę.",
+      "choiceWeather": "Jaka będzie pogoda w najbliższym czasie?",
       "chooseCity": "Wybieram miasto ",
       "thank": "Dzięki!",
-      "moreDetails": "Chcę więcej szczegółów",
-      "choiceDay": "Wybierz dzień"
+      "moreDetails": "Pokaż więcej szczegółów",
+      "choiceDay": "Potwierdź dzień"
     },
     "error": {
       "wrongDate": "Nie wybrano daty!",
@@ -51,56 +53,68 @@
       "errorRateJoke": "Nie można ocenić żartu. \n Błąd: "
     },
     "user": {
-      "choiceJokes": "Opowiedz mi żart.",
+      "choiceJokes": "Znasz jakiś dobry kawał?",
       "randomCategoryChosen": "Zaskocz mnie!",
       "categoryChosen": "Opowiedz mi żart z kategorii ",
       "categories": "Wybierz kategorię",
       "anotherJoke": "Opowiedz mi jeszcze jeden!",
-      "rateJoke": "Chiałbym ocenić ten żart.",
+      "rateJoke": " No pewnie , że ocenię! W końcu liczy się jakość...",
       "outOf": " na ",
-      "tellJoke": "A może teraz ja Ci coś opowiem :D?",
+      "tellJoke": " A może teraz ja Ci opowiem jakiś kawał 😄?",
       "anotherJokeBtn": "Kolejny żart",
       "rateJokeBtn": "Oceń żart",
-      "tellJokeBtn": "Opowiem Ci żart",
-      "tellJokePlaceholder": "Podaj treść żartu...",
-      "addJokeButton": "Dodaj żart"
+      "giveNext": "Dawaj następny",
+      "tellJokeBtn": "Teraz ja opowiadam!",
+      "tellJokePlaceholder": "Podaj treść żartu dla kategorii "
     },
     "bot": {
-      "cheeringUp": "Chętnie poprawie Ci humor!",
-      "greatJokes": "Znam mnóstwo świetnych żartów!",
-      "kindOfJokes": "O czym będziemy dziś żartować?",
-      "nextStep": "Co chciałbyś porobić teraz?",
+      "cheeringUp": "No pewnie! Znam mnóstwo świetnych żartów 😁",
+      "greatJokes": "Chętnie poprawię Ci humor...",
+      "kindOfJokes": "Na co masz ochotę?",
+      "nextStep": "To co? Lecimy dalej?",
       "great": "Świetnie!",
-      "rateJokeResponse2": "Jaką ocenę chciałbyś dać?",
-      "lowRate": "Następnym razem postaram się lepiej trafić w twój gust",
-      "highRate": "Świetnie! Ciesze się, że Ci się podobał",
+      "rateJokeResponse1": "No to dalej! Skala od 1 do 5 czeka - dla najlepszych ciśnij od razu 5 żółtych gwiazdek. Dla chłamu raczej mniej...",
+      "rateJokeResponse2": "Jeżeli się wahasz to są też połówki 🤭",
+      "lowRate1": "Uuuuhhh... 😥",
+      "lowRate2": "Następnym razem postaram się lepiej trafić w twój gust",
+      "highRate": "Świetnie! Ciesze się, że Ci się spodobał 😉",
       "avgRate": "Użytkownicy zazwyczaj oceniali ten żart tak: ",
       "tellJokeRespond": "Zamieniam się w słuch!",
-      "savingJoke": "Hahaha, dobre, zapamięta go sobie!",
+      "savingJoke": "Hahaha, dobre, zapamiętam go sobie!",
       "anotherJokeResponse": "Jasne! O czym miałby on być?",
-      "noJokeInCategory": "O nie! W danej kategorii nie mamy żadnych żartów"
+      "noJokeInCategory": "O nie! W danej kategorii nie mamy żadnych żartów",
+      "smile": "😂",
+      "greatJoke": "Niezły, no nie?",
+      "howYouLikeIt": "A Tobie jak się podobał?"
     }
   },
   "food": {
     "bot": {
-      "foodCategory": "Swietnie! Wybierz teraz kategorię!",
-      "foodPredictions": "Swietnie! Oto co znalazłem w",
-      "addRate": "Swietnie! podaj swoją ocenę",
-      "ratedRestaurant": "Swietnie! Wezmiemy ocenę pod uwagę",
+      "introduction1": "No pewnie! Znam mnóstwo świetnych knajp...",
+      "introduction2": "Jaka dokładnie lokalizacja Cię interesuje?",
+      "foodCategory1": "Chętnie polecę Ci coś smacznego w mieście: {city} 😋",
+      "foodCategory2": "Na co masz dziś ochotę?",
+      "foodNewCategory": "Nie ma problemu! Wybierz zatem na co masz ochotę...",
+      "foodPredictions": "Świetnie! Oto co znalazłem w",
+      "addRate1": "No to dalej! Skala od 1 do 5 czeka.... 🤩",
+      "addRate2": "Daj znać innym czy w tej knajpie jest pyszne jedzenie \"na piątkę\" czy lepiej szukać dalej... 😛",
+      "ratedRestaurant": "Mamy to 👌",
       "for": "dla",
       "currencyPL": "zł",
       "avgRate": "Użytkownicy zazwyczaj oceniali tę restaurację tak: "
     },
     "user": {
-      "choiceRestaurant": "Chce poznac resturacje w okolicy",
-      "choiceAnotherRestaurant": "Pokaż podobne",
-      "choiceNewCategory": "Pokaż inne kategorie",
-      "choiceMenu": "Swietnie! Pokaż menu",
+      "choiceRestaurant": "Polecisz jakąś fajną restaurację w okolicy?",
+      "categoryChoice": "Mam ochotę na jedzenie z kategorii: {category}",
+      "choiceAnotherRestaurant": "Pokaż kolejną",
+      "choiceNewCategory": "Zmień kategorię",
+      "chosenNewCategory": "Jednak mam ochotę na coś innego, może jednak zmienię kategorię...",
+      "choiceMenu": "Świetnie! Pokaż menu",
       "restaurant": "kategorie",
-      "rateRestauration": "Chciałbym ocenić restauracje",
-      "rateRestaurationChoice": "Oceń restauracje",
+      "rateRestauration": "Chciałbym ocenić restaurację",
+      "rateRestaurationChoice": "Oceń restaurację",
       "maxRate": "na 5",
-      "chooseOtherRestaurant": "Chciałbym jednak zobaczyć inną restaurację"
+      "chooseOtherRestaurant": "Polecisz mi inną restaurację z kategorii {category}?"
     },
     "errors": {
       "errorListOfCategories": "Nie można pobrać kategorii. \n Błąd: ",
@@ -128,7 +142,7 @@
     }
   },
   "adminJokes": {
-    "categoriesTitle" :"Lista kategorii",
+    "categoriesTitle": "Lista kategorii",
     "unconfirmedJokes": "Niepotwierdzone żarty",
     "emptyListOfCategoryTitle": "Brak kategorii żartów, stwórz nową",
     "emptyListOfCategoryButton": "klikając tutaj",
@@ -150,7 +164,7 @@
     "modalRemoveCategoryTitle": "Usuwanie kategorii",
     "modalRemoveCategoryTextAlert": "Czy na pewno chcesz usunać tą kategorię?",
     "modalRemoveCategoryButton": "Tak, jestem tego pewien.",
-    "errorRemoveResponseCategory":"Wystąpił błąd podczas usuwania kategorii.",
+    "errorRemoveResponseCategory": "Wystąpił błąd podczas usuwania kategorii.",
     "loadingTitle": "Trwa ładowanie 🔥🔥🔥",
     "emptyListOfJokeTitle": "Oh no, nie mamy nic śmiesnego 😢, zmień to",
     "emptyListOfJokeButton": "klikając tutaj",
@@ -162,7 +176,7 @@
     "modalNewJoke": "Wprowadź treść żartu",
     "validateJokeNameEmpty": "Zawartość żartu nie może byc pusta",
     "modalEditJokeTitle": "Modyfikacja żartu",
-    "modalEditJoke":"Wprowadź treść żartu",
+    "modalEditJoke": "Wprowadź treść żartu",
     "modalEditJokeButton": "Edytuj żart",
     "editJokeButton": "Edytuj żart",
     "validateJokeContentEmpty": "Zawartość żartu nie może byc pusta",
@@ -269,9 +283,9 @@
   },
   "fortune": {
     "user": {
-      "entrance": "Chciałbym sprawdzić kursy giełdowe.",
+      "entrance": "Co tam słychać na giełdzie? 🤑",
       "currency": "Chciałbym dowiedzieć się czegoś o kursach walut.",
-      "exchange": "Chciałbym dowiedzieć się czegoś o kursach na giełdzie.",
+      "exchange": "Jakie są aktualne kursy giełdowe wiodących spółek?",
       "chosenCurrency": "Wybieram walutę ",
       "chosenExchange": "Wybieram akcje firmy ",
       "chosenActual": "Wybieram aktualny ceny akcji.",
@@ -283,7 +297,7 @@
       "to": "do"
     },
     "bot": {
-      "entrance": "Co dokładnie chciałbyś sprawdzić?",
+      "entrance": "W jakim obszarze szukasz informacji?",
       "currency": "O jakiej dokładnie walucie rozmawiamy?",
       "exchange": "O akcjach jakiej firmy dokładnie rozmawiamy?",
       "anotherCurrency": "Teraz musisz wybrać inną walutę na którą chcesz sprawdzić kurs",
@@ -316,10 +330,18 @@
     }
   },
   "common": {
-    "dayPicker": "Wybierz dzień"
+    "dayPicker": "Wybierz dzień",
+    "calendarHelp": "Kliknij kursorem aby zaznaczyć dzień",
+    "yes": "Tak",
+    "no": "Nie",
+    "bot": {
+      "yes1": "I to jest konkret!",
+      "yes2": "Cieszę się, że wciąż tu jesteś 🤗",
+      "yes3": "Kliknij kategorię, o której chcesz jeszcze pogadać...",
+      "no": "Tak czułem, ale wolałem się upewnić 😊"
+    }
   },
   "errors": {
     "wrongDate": "Nie wybrano poprawnej daty"
   }
 }
-

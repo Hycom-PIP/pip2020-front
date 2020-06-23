@@ -44,6 +44,7 @@
                 <FutureData :stocks="this.data" :currency="passedCurrency" v-if="showFutureDataComponent"/>
             </div>
         </transition>
+        <CategoryEnding v-if="showCategoryEnding"></CategoryEnding>
     </div>
 </template>
 <script>
@@ -57,13 +58,14 @@
     import FutureData from "./models/FutureData";
     import {formatter, fortuneService, themeService} from "../../../App";
     import {sendMessage} from "../../common/messages";
+    import CategoryEnding from "../../common/CategoryEnding";
 
     export default {
         name: 'Fortune',
         components: {
             FutureData,
             HistoryData,
-            ChooseTime, CurrencyDropdown, ExchangeDropdown, DayChooseComponent, PeriodChooseComponent
+            ChooseTime, CurrencyDropdown, ExchangeDropdown, DayChooseComponent, PeriodChooseComponent, CategoryEnding
         },
         props: ['botIconSource'],
         data: function () {
@@ -83,8 +85,8 @@
                 data: null,
                 themeService,
                 disabled: false,
-                currencies: [],
-                passedCurrency: ''
+                showCategoryEnding: false
+
             }
         },
         created() {
@@ -99,6 +101,7 @@
             this.$root.$on('showHistoryData', () => this.showHistoryData());
             this.$root.$on('showDayHistory', (data) => this.showHistoryDataForDay(data));
             this.$root.$on('showPeriodHistory', (data) => this.showHistoryDataForPeriod(data));
+            this.$root.$on('hideEnding', () => this.showCategoryEnding = false);
         },
         methods: {
             showExchange() {
@@ -144,8 +147,10 @@
                                         this.showTimeButtons = true;
                                     })
                                 })
-                            } else
+                            } else {
                                 sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
+                                this.showCategoryEnding();
+                            }
                         })
                     })
                 }
@@ -162,8 +167,10 @@
                                     this.showTimeButtons = true;
                                 })
                             })
-                        } else
+                        } else {
                             sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
+                            this.showCategoryEnding();
+                        }
                     })
                 })
             },
@@ -205,13 +212,14 @@
             },
             showHistoryDataForDay(data) {
                 this.showDayChooser = false;
-                sendMessage(this, "user", `${this.$t('fortune.user.myChoice')} ${data[0]}`).then(() => {
+                sendMessage(this, "user", data[0]).then(() => {
                     fortuneService.getHistoryDataForSymbol(this.symbol, data[1]).then(response => {
                         if (response.ok) {
                             sendMessage(this, "bot",
                                 `${this.$t('fortune.bot.valueStockInDay')} ${data[0]} ${this.$t('fortune.bot.value')} ${response.value}`)
                         } else {
                             sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
+                            this.showCategoryEnding();
                         }
                     })
                 })
@@ -237,6 +245,9 @@
                 this.$nextTick(() => {
                     afterDisableFunction();
                 })
+            },
+            endCategory() {
+                this.showCategoryEnding = true;
             }
         },
     }
