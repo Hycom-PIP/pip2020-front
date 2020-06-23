@@ -6,6 +6,7 @@
       value-as-date
       locale="pl-PL"
       v-bind="labels"
+      :max="max"
       :label-help="$t('common.calendarHelp')"
     >
       <div class="d-flex" dir="ltr">
@@ -19,11 +20,14 @@
 export default {
   name: "DayChooseComponent",
   data: function() {
+    const maxDate = new Date();
+    maxDate.setDate(maxDate.getDate() - 1);
     return {
       context: null,
       labels: {
         labelNoDateSelected: this.$t("errors.wrongDate")
-      }
+      },
+      max: maxDate
     };
   },
   mounted() {},
@@ -36,6 +40,7 @@ export default {
     },
     onContext(ctx) {
       this.context = ctx;
+      this.labels.labelNoDateSelected = this.context.activeFormatted
     }
   }
 };
