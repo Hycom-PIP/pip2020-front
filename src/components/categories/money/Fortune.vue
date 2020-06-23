@@ -40,8 +40,8 @@
         </transition>
         <transition name="button-picker-slide">
             <div>
-                <HistoryData :stocks="this.data" :currency="passedCurrency" v-if="showHistoryDataComponent"/>
-                <FutureData :stocks="this.data" :currency="passedCurrency" v-if="showFutureDataComponent"/>
+                <HistoryData :stocks="data" :currency="passedCurrency" v-if="showHistoryDataComponent"/>
+                <FutureData :stocks="data" :currency="passedCurrency" v-if="showFutureDataComponent"/>
             </div>
         </transition>
         <CategoryEnding v-if="showCategoryEnding"></CategoryEnding>
@@ -65,7 +65,12 @@
         components: {
             FutureData,
             HistoryData,
-            ChooseTime, CurrencyDropdown, ExchangeDropdown, DayChooseComponent, PeriodChooseComponent, CategoryEnding
+            ChooseTime,
+            CurrencyDropdown,
+            ExchangeDropdown,
+            DayChooseComponent,
+            PeriodChooseComponent,
+            CategoryEnding
         },
         props: ['botIconSource'],
         data: function () {
@@ -168,7 +173,7 @@
                                 })
                             })
                         } else {
-                            sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
+                            sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`);
                             this.showCategoryEnding();
                         }
                     })
@@ -202,7 +207,6 @@
                 this.showTimeButtons = false;
                 sendMessage(this, "user", `${this.$t('fortune.user.chosenFuture')}`).then(() => {
                     sendMessage(this, "bot", this.$t('fortune.bot.futureData')).then(() => {
-                        this.showFutureDataComponent = true;
                         fortuneService.getFutureDataForSymbol(this.symbol).then(response => {
                             this.data = response;
                             this.showFutureDataComponent = true;
