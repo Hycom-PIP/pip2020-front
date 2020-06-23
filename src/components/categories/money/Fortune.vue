@@ -139,9 +139,9 @@
                     this.symbol = `${this.symbol}${currency}=X`;
                     sendMessage(this, "user",
                         `${this.$t('fortune.user.chosenCurrency')} ${currency}`).then(() => {
-                        fortuneService.getActualDataForSymbol(this.symbol, formatter.formatDate(Date.now()))
+                        fortuneService.getActualDataForSymbol(this.symbol)
                             .then(response => {
-                                if (response) {
+                                if (!response.errors) {
                                     sendMessage(this, "bot",
                                         `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}`)
                                         .then(() => {
@@ -160,7 +160,7 @@
                 this.symbol = exchange.symbol;
                 sendMessage(this, "user", `${this.$t('fortune.user.chosenExchange')} ${exchange.name}`).then(() => {
                     fortuneService.getActualDataForSymbol(this.symbol).then(response => {
-                        if (response) {
+                        if (!response.errors) {
                             sendMessage(this, "bot",
                                 `${this.$t('fortune.bot.valueStockToday')} ${this.$t('fortune.bot.isValue')} ${response.value}`).then(() => {
                                 sendMessage(this, "bot", this.$t('fortune.bot.chooseTime')).then(() => {
