@@ -2,7 +2,7 @@
     <div class="exchange-chooser">
         <b-dropdown v-bind:text="$t('fortune.buttons.choiceExchange')"
                     v-bind:class="themeService.getActiveTheme().themeName">
-            <b-dropdown-item v-for="exchange in exchanges" v-bind:key="exchange" v-on:click="chooseExchange(exchange)">
+            <b-dropdown-item v-for="(exchange, index) in exchanges" v-bind:key="index" v-on:click="chooseExchange(exchange)">
                 {{exchange.name}}
             </b-dropdown-item>
         </b-dropdown>

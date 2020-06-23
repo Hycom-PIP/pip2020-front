@@ -3,7 +3,7 @@
         <div id="calendar">
             <div id="header-wrapper">
                 <b-calendar class="calendar" @context="onContext" value-as-date locale="pl-PL"
-                            v-bind="labels" :min="min" :max="max" >
+                            v-bind="labels" :min="min" :max="max" :label-help="$t('common.calendarHelp')">
                     <div class="d-flex" dir="ltr">
                         <b-button v-bind:class="themeService.getActiveTheme().themeName"
                                   class="m-2"
