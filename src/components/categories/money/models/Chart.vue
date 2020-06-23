@@ -64,6 +64,7 @@
         },
 
         created() {
+            this.options.scales.ticks.maxTicksLimit = this.chartData.length;
             moment.locale('pl')
             this.setColor()
 
