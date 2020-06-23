@@ -55,7 +55,6 @@ export default {
       showCategoryEnding: false,
       weatherData: "",
       messages: {
-        myChoice: this.$t("user.myChoice"),
         myPredictions: this.$t("weather.bot.myPredictions"),
         onDayMessage: this.$t("weather.bot.onDay"),
         chooseCity: this.$t("weather.user.chooseCity"),
@@ -98,7 +97,7 @@ export default {
         weatherData.city = this.city;
         weatherData.time = this.time;
         this.weatherData = weatherData;
-        sendMessage(this, "user", this.messages.myChoice + this.userTime).then(
+        sendMessage(this, "user", this.userTime).then(
           () => {
             sendMessage(
               this,
@@ -125,7 +124,7 @@ export default {
     },
     showMoreDetailsMessage() {
       this.endOrDetailsButtons = false;
-      sendMessage(this, "user", this.$t("weather.user.moreDetails")).then(
+      sendMessage(this, "user", this.$t("weather.user.moreDetailsChoice")).then(
         () => {
           sendMessage(
             this,
@@ -139,7 +138,7 @@ export default {
       );
     },
     endTalk() {
-      sendMessage(this, "user", this.$t("weather.user.thank")).then(() => {
+      sendMessage(this, "user", this.$t("common.user.thanks")).then(() => {
         sendMessage(this, "bot", this.$t("weather.bot.couldHelp")).then(() => {
           sendMessage(this, "bot", this.$t("weather.bot.anythingToDo")).then(
             () => {

@@ -93,10 +93,10 @@ export default {
             ).then(() => {
               this.sendNestedMessage(
                 "bot",
-                `${this.$t("food.bot.foodPredictions")}
-                                               ${this.city.city} ${this.$t(
-                  "food.bot.for"
-                )} ${this.category}`
+                this.$t("food.bot.foodPredictions", {
+                  city: this.city.city,
+                  category: this.category
+                })
               ).then(() => {
                 this.sendNestedMessage(
                   "bot",

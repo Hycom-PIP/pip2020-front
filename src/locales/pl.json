@@ -35,6 +35,7 @@
       "chooseCity": "Wybieram miasto ",
       "thank": "Dzięki!",
       "moreDetails": "Pokaż więcej szczegółów",
+      "moreDetailsChoice": "A jak z ciśnieniem? Parzyć już jakąś kawę?",
       "choiceDay": "Potwierdź dzień"
     },
     "error": {
@@ -57,10 +58,10 @@
       "randomCategoryChosen": "Zaskocz mnie!",
       "categoryChosen": "Opowiedz mi żart z kategorii ",
       "categories": "Wybierz kategorię",
-      "anotherJoke": "Opowiedz mi jeszcze jeden!",
-      "rateJoke": " No pewnie , że ocenię! W końcu liczy się jakość...",
+      "anotherJoke": "Niezłe masz poczucie humoru!",
+      "rateJoke": "Pozwól, że ocenię! W końcu liczy się jakość...",
       "outOf": " na ",
-      "tellJoke": " A może teraz ja Ci opowiem jakiś kawał 😄?",
+      "tellJoke": " A może teraz ja Ci opowiem jakiś kawał? 😄",
       "anotherJokeBtn": "Kolejny żart",
       "rateJokeBtn": "Oceń żart",
       "giveNext": "Dawaj następny",
@@ -79,9 +80,9 @@
       "lowRate2": "Następnym razem postaram się lepiej trafić w twój gust",
       "highRate": "Świetnie! Ciesze się, że Ci się spodobał 😉",
       "avgRate": "Użytkownicy zazwyczaj oceniali ten żart tak: ",
-      "tellJokeRespond": "Zamieniam się w słuch!",
+      "tellJokeRespond": "Zamieniam się w słuch! 👂",
       "savingJoke": "Hahaha, dobre, zapamiętam go sobie!",
-      "anotherJokeResponse": "Jasne! O czym miałby on być?",
+      "anotherJokeResponse": "Jasne! O czym chciałbyś teraz pożartować?",
       "noJokeInCategory": "O nie! W danej kategorii nie mamy żadnych żartów",
       "smile": "😂",
       "greatJoke": "Niezły, no nie?",
@@ -95,11 +96,10 @@
       "foodCategory1": "Chętnie polecę Ci coś smacznego w mieście: {city} 😋",
       "foodCategory2": "Na co masz dziś ochotę?",
       "foodNewCategory": "Nie ma problemu! Wybierz zatem na co masz ochotę...",
-      "foodPredictions": "Świetnie! Oto co znalazłem w",
+      "foodPredictions": "Świetnie! Oto co znalazłem w mieście {city} dla kategorii {category}",
       "addRate1": "No to dalej! Skala od 1 do 5 czeka.... 🤩",
       "addRate2": "Daj znać innym czy w tej knajpie jest pyszne jedzenie \"na piątkę\" czy lepiej szukać dalej... 😛",
       "ratedRestaurant": "Mamy to 👌",
-      "for": "dla",
       "currencyPL": "zł",
       "avgRate": "Użytkownicy zazwyczaj oceniali tę restaurację tak: "
     },
@@ -110,7 +110,7 @@
       "choiceNewCategory": "Zmień kategorię",
       "chosenNewCategory": "Jednak mam ochotę na coś innego, może jednak zmienię kategorię...",
       "choiceMenu": "Świetnie! Pokaż menu",
-      "restaurant": "kategorie",
+      "restaurant": "Wybierz kategorię",
       "rateRestauration": "Chciałbym ocenić restaurację",
       "rateRestaurationChoice": "Oceń restaurację",
       "maxRate": "na 5",
@@ -283,15 +283,15 @@
   },
   "fortune": {
     "user": {
-      "entrance": "Co tam słychać na giełdzie? 🤑",
+      "entrance": "Co tam słychać na giełdzie?",
       "currency": "Chciałbym dowiedzieć się czegoś o kursach walut.",
-      "exchange": "Jakie są aktualne kursy giełdowe wiodących spółek?",
+      "exchange": "Chciałbym dowiedzieć się jakie są kursy giełdowe wiodących spółek?",
       "chosenCurrency": "Wybieram walutę ",
       "chosenExchange": "Wybieram akcje firmy ",
       "chosenActual": "Wybieram aktualny ceny akcji.",
       "chosenFuture": "Wybieram prognozy cen akcji.",
-      "chosenHistory": "Wybieram dane historyczne cen akcji.",
-      "chosenDay": "Chce poznać dane z konkretnego dnia",
+      "chosenHistory": "Pokaż dane historyczne...",
+      "chosenDay": "Interesuje mnie konkretny dzień...",
       "chosenPeriod": "Chce poznać dane z pewnego okresu.",
       "myChoice": "Wybieram ",
       "to": "do"
@@ -306,15 +306,16 @@
       "futureData": "Oto prognoza cen akcji: ",
       "historyData": "Oto historyczne ceny akcji dla okresu ",
       "historyDataDay": "Oto historyczne dane cen akcji dla wybranego dnia: ",
-      "historyChoice": "Wybierasz dzień czy okres?",
-      "dayChoice": "A z jakiego konretnie?",
-      "periodChoice": "A z jakiego konretnie?",
+      "historyChoice": "Interesuje Cię jakiś konkretny dzień czy dłuższy okres czasu?",
+      "dayChoice": "Świetnie! Wybierz dzień z kalendarza, a ja zaraz przedstawię Ci wszystkie istotne informacje 💲",
+      "periodChoice": "Świetnie! Wybierz dzień z kalendarza, a ja zaraz przedstawię Ci wszystkie istotne informacje 💲",
       "valueStockInDay": "Wartośc akcji w dniu",
       "valueStockToday": "Wartośc obecna akcji",
       "value": "była równa: ",
       "isValue": "jest równa: ",
       "nonExistingData": "Niestety nie posiadam danych z tego dnia, musisz wybrać inny",
-      "noData": "Oj. Nie mogę pobrać danych."
+      "noData": "Oj. Nie mogę pobrać danych.",
+      "ending": "Czy chciałbyś o czymś jeszcze porozmawiać?"
     },
     "buttons": {
       "currency": "Waluta",
@@ -325,7 +326,7 @@
       "actual": "Aktualne",
       "future": "Przyszłe",
       "day": "Dzień",
-      "period": "Okres",
+      "period": "Okres czasu",
       "choicePeriod": "Wybieram okres"
     }
   },
@@ -339,6 +340,9 @@
       "yes2": "Cieszę się, że wciąż tu jesteś 🤗",
       "yes3": "Kliknij kategorię, o której chcesz jeszcze pogadać...",
       "no": "Tak czułem, ale wolałem się upewnić 😊"
+    },
+    "user": {
+      "thanks": "Dzięki! 👍"
     }
   },
   "errors": {
