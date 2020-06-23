@@ -58,12 +58,7 @@
     import FutureData from "./models/FutureData";
     import {formatter, fortuneService, themeService} from "../../../App";
     import {sendMessage} from "../../common/messages";
-<<<<<<< HEAD
-=======
-    import {formatter} from "../../../App";
-    import {themeService} from "../../../App";
     import CategoryEnding from "../../common/CategoryEnding";
->>>>>>> Updating messages
 
     export default {
         name: 'Fortune',
@@ -90,13 +85,8 @@
                 data: null,
                 themeService,
                 disabled: false,
-<<<<<<< HEAD
-                currencies: [],
-                passedCurrency: ''
-=======
                 showCategoryEnding: false
 
->>>>>>> Updating messages
             }
         },
         created() {
@@ -157,8 +147,10 @@
                                         this.showTimeButtons = true;
                                     })
                                 })
-                            } else
+                            } else {
                                 sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
+                                this.showCategoryEnding();
+                            }
                         })
                     })
                 }
@@ -175,8 +167,10 @@
                                     this.showTimeButtons = true;
                                 })
                             })
-                        } else
+                        } else {
                             sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
+                            this.showCategoryEnding();
+                        }
                     })
                 })
             },
@@ -225,6 +219,7 @@
                                 `${this.$t('fortune.bot.valueStockInDay')} ${data[0]} ${this.$t('fortune.bot.value')} ${response.value}`)
                         } else {
                             sendMessage(this, "bot", `${this.$t('fortune.bot.nonExistingData')}`)
+                            this.showCategoryEnding();
                         }
                     })
                 })
