@@ -315,7 +315,8 @@
       "isValue": "jest równa: ",
       "nonExistingData": "Niestety nie posiadam danych z tego dnia, musisz wybrać inny",
       "noData": "Oj. Nie mogę pobrać danych.",
-      "ending": "Czy chciałbyś o czymś jeszcze porozmawiać?"
+      "ending": "Czy chciałbyś o czymś jeszcze porozmawiać?",
+      "usd": "$"
     },
     "buttons": {
       "currency": "Waluta",
