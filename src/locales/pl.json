@@ -7,7 +7,7 @@
     "categoryWeather": "Pogoda",
     "categoryJokes": "Żarty",
     "categoryRestaurants": "Restauracje",
-    "categoryFortune": "Złotówa"
+    "categoryFortune": "Fortuna"
   },
   "user": {
     "city": "Wybierz miasto",
@@ -34,7 +34,7 @@
       "choiceWeather": "Jaka będzie pogoda w najbliższym czasie?",
       "chooseCity": "Wybieram miasto ",
       "thank": "Dzięki!",
-      "moreDetails": "Pokaż więcej szczegółów",
+      "moreDetails": "Pokaż więcej szczegółów...",
       "moreDetailsChoice": "A jak z ciśnieniem? Parzyć już jakąś kawę?",
       "choiceDay": "Potwierdź dzień"
     },
@@ -59,6 +59,7 @@
       "categoryChosen": "Opowiedz mi żart z kategorii ",
       "categories": "Wybierz kategorię",
       "anotherJoke": "Niezłe masz poczucie humoru!",
+      "oneMore": "Dawaj jeszcze jeden... \uD83D\uDE1C",
       "rateJoke": "Pozwól, że ocenię! W końcu liczy się jakość...",
       "outOf": " na ",
       "tellJoke": " A może teraz ja Ci opowiem jakiś kawał? 😄",
@@ -285,12 +286,12 @@
   "fortune": {
     "user": {
       "entrance": "Co tam słychać na giełdzie?",
-      "currency": "Chciałbym dowiedzieć się czegoś o kursach walut.",
+      "currency": "Jakie są aktualne kursy walut?",
       "exchange": "Chciałbym dowiedzieć się jakie są kursy giełdowe wiodących spółek?",
       "chosenCurrency": "Wybieram walutę ",
       "chosenExchange": "Wybieram akcje firmy ",
       "chosenActual": "Wybieram aktualny ceny akcji.",
-      "chosenFuture": "Wybieram prognozy cen akcji.",
+      "chosenFuture": "Pokaż prognozę...",
       "chosenHistory": "Pokaż dane historyczne...",
       "chosenDay": "Interesuje mnie konkretny dzień...",
       "chosenPeriod": "Chce poznać dane z pewnego okresu.",
@@ -299,22 +300,23 @@
     },
     "bot": {
       "entrance": "W jakim obszarze szukasz informacji?",
-      "currency": "O jakiej dokładnie walucie rozmawiamy?",
+      "currency": "Dla jakiej waluty chcesz poznać kurs?",
       "exchange": "O akcjach jakiej firmy dokładnie rozmawiamy?",
-      "anotherCurrency": "Teraz musisz wybrać inną walutę na którą chcesz sprawdzić kurs",
-      "chooseTime": "Z jakiego okresu chcesz dane?",
+      "anotherCurrency": "Wybierz walutę, w której ma zostać przedstawiony aktualny kurs dla",
+      "chooseTime": "Możesz także poznać kursy historyczne i sprawdzić moją predykcję...",
+      "investments": "Czasem warto zainwestować \uD83E\uDD11",
       "actualData": "Oto aktualne ceny akcji: ",
-      "futureData": "Oto prognoza cen akcji: ",
+      "futureData": "Oto prognoza cen akcji dla",
       "currencyFutureData": "Oto prognoza kursu:",
       "historyData": "Oto historyczne ceny akcji dla okresu ",
       "historyDataDay": "Oto historyczne dane cen akcji dla wybranego dnia: ",
-      "historyChoice": "Interesuje Cię jakiś konkretny dzień czy dłuższy okres czasu?",
+      "historyChoice": "Interesuje Cię jakiś konkretny dzień czy dłuższy okres?",
       "dayChoice": "Świetnie! Wybierz dzień z kalendarza, a ja zaraz przedstawię Ci wszystkie istotne informacje 💲",
-      "periodChoice": "Świetnie! Wybierz dzień z kalendarza, a ja zaraz przedstawię Ci wszystkie istotne informacje 💲",
-      "valueStockInDay": "Wartośc akcji w dniu",
-      "valueStockToday": "Wartośc obecna akcji",
-      "valueCurrencyInDay": "Wartośc kursu w dniu",
-      "valueCurrencyToday": "Wartośc obecna kursu",
+      "periodChoice": "Świetnie! Wskaż okres zaznaczając jego dzień początkowy i końcowy w kalendarzu, a ja zaraz przedstawię Ci wszystkie istotne informacje \uD83D\uDCB2",
+      "valueStockInDay": "Wartość akcji w dniu",
+      "valueStockToday": "Obecna wartość akcji:",
+      "valueCurrencyInDay": "Wartość kursu w dniu",
+      "valueCurrencyToday": "Obecna wartość kursu:",
       "value": "była równa: ",
       "isValue": "jest równa: ",
       "nonExistingData": "Niestety nie posiadam danych z tego dnia, musisz wybrać inny",
@@ -329,10 +331,10 @@
       "choiceExchange": "Wybierz firmę",
       "history": "Historyczne",
       "actual": "Aktualne",
-      "future": "Przyszłe",
+      "future": "Prognoza",
       "day": "Dzień",
-      "period": "Okres czasu",
-      "choicePeriod": "Wybieram okres"
+      "period": "Okres",
+      "choicePeriod": "Potwierdź"
     }
   },
   "common": {
