@@ -66,7 +66,8 @@
       "rateJokeBtn": "Oceń żart",
       "giveNext": "Dawaj następny",
       "tellJokeBtn": "Teraz ja opowiadam!",
-      "tellJokePlaceholder": "Podaj treść żartu dla kategorii "
+      "tellJokePlaceholder": "Podaj treść żartu dla kategorii ",
+      "addJokeButton": "Dodaj żart"
     },
     "bot": {
       "cheeringUp": "No pewnie! Znam mnóstwo świetnych żartów 😁",

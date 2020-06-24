@@ -83,12 +83,15 @@ export default {
   },
   methods: {
     sendMessageFromBot(text) {
-      const jokesLines = formatter.asLines(text);
+      return this.sendJokeMessage(text, 'bot');
+    },
+    sendJokeMessage(joke, author) {
+      const jokesLines = formatter.asLines(joke);
       let concatenatedPromise = Promise.resolve();
       jokesLines.forEach(
         message =>
           (concatenatedPromise = concatenatedPromise.then(() =>
-            sendMessage(this, "bot", message)
+            sendMessage(this, author, message)
           ))
       );
       return concatenatedPromise;
@@ -215,7 +218,7 @@ export default {
       this.showNewJokeComponent = false;
       this.showRatingJokesBtn = false;
       this.showNewJokeBtn = false;
-      this.sendMessageFromUser(joke).then(() => {
+      this.sendJokeMessage(joke, 'user').then(() => {
         this.sendMessageFromBot(this.$t("jokes.bot.savingJoke")).then(() => {
           this.sendMessageFromBot(this.$t("jokes.bot.nextStep")).then(() => {
             this.showNextSteps = true;
