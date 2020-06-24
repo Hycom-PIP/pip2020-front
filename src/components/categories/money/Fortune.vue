@@ -92,6 +92,7 @@ export default {
       showAnotherCurrencies: false,
       isCurrency: true,
       symbol: null,
+      companyName: '',
       showTimeButtons: false,
       choosePeriod: false,
       showDayChooser: false,
@@ -159,7 +160,7 @@ export default {
         this.showCurrencies = false;
         this.currencies = this.currencies.filter(e => e !== currency);
         sendMessage(this, "user", currency).then(() => {
-          sendMessage(this, "bot", this.$t("fortune.bot.anotherCurrency")).then(
+          sendMessage(this, "bot", `${this.$t("fortune.bot.anotherCurrency")} ${this.symbol}`).then(
             () => {
               this.showAnotherCurrencies = true;
             }
@@ -193,7 +194,9 @@ export default {
                   "bot",
                   this.$t("fortune.bot.chooseTime")
                 ).then(() => {
-                  this.showTimeButtons = true;
+                  sendMessage(this, "bot", this.$t('fortune.bot.investments')).then(() => {
+                    this.showTimeButtons = true;
+                  });
                 });
               });
             }
@@ -203,6 +206,7 @@ export default {
     },
     showExchangeAndButtons(exchange) {
       this.showExchanges = false;
+      this.companyName = exchange.name;
       this.symbol = exchange.symbol;
       sendMessage(this, "user", exchange.name).then(() => {
         fortuneService.getActualDataForSymbol(this.symbol).then(response => {
@@ -224,11 +228,12 @@ export default {
               "bot",
               this.messageWithValue(baseMessage, response.value, unit)
             ).then(() => {
-              sendMessage(this, "bot", this.$t("fortune.bot.chooseTime")).then(
-                () => {
-                  this.showTimeButtons = true;
-                }
-              );
+              sendMessage(this, "bot", this.$t("fortune.bot.chooseTime"))
+                .then(() => {sendMessage(this, "bot", this.$t('fortune.bot.investments'))
+                  .then(() => {
+                    this.showTimeButtons = true;
+                  });
+                });
             });
           }
         });
@@ -273,7 +278,7 @@ export default {
     showFutureData() {
       const futureMessage = this.isCurrency
         ? this.$t("fortune.bot.currencyFutureData")
-        : this.$t("fortune.bot.futureData");
+        : `${this.$t("fortune.bot.futureData")} ${this.companyName}:`;
       this.showTimeButtons = false;
       sendMessage(this, "user", `${this.$t("fortune.user.chosenFuture")}`).then(
         () => {

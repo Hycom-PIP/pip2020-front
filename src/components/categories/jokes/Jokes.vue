@@ -231,11 +231,13 @@ export default {
       this.showNewJokeBtn = true;
       this.showRatingJokesBtn = true;
       this.sendMessageFromUser(this.$t("jokes.user.anotherJoke")).then(() => {
-        this.sendMessageFromBot(this.$t("jokes.bot.anotherJokeResponse")).then(
-          () => {
-            this.showCategories = true;
-          }
-        );
+        this.sendMessageFromUser(this.$t('jokes.user.oneMore')).then(() => {
+          this.sendMessageFromBot(this.$t("jokes.bot.anotherJokeResponse")).then(
+                  () => {
+                    this.showCategories = true;
+                  }
+          );
+        });
       });
     },
     disableButtons(afterDisableFunction) {
