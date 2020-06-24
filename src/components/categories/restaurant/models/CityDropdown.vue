@@ -38,6 +38,6 @@
 </script>
 <style scoped>
     #dropdown-button {
-        margin-left: 85%;
+        text-align: right;
     }
 </style>

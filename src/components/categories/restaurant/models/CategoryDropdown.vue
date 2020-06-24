@@ -42,9 +42,6 @@
     }
 </script>
 <style scoped>
-    #dropdown-button {
-        margin-left: 85%;
-    }
 
     .enable-scroll {
         height: 150px;
