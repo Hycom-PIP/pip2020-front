@@ -126,12 +126,17 @@ export default {
     this.$root.$on("showEnding", () => this.endCategoryAfter(this.$nextTick()));
   },
   methods: {
+    formatValue(value, unit) {
+      return `${formatter.formatFloat(value)}${unit}`;
+    },
+    messageWithValue(baseMessage, value, unit) {
+      return `${baseMessage} ${this.formatValue(value, unit)}`;
+    },
     showExchange() {
       this.isCurrency = false;
       this.exchangeCurrencyButtons = false;
       sendMessage(this, "user", this.$t("fortune.user.exchange")).then(() => {
         sendMessage(this, "bot", this.$t("fortune.bot.exchange")).then(() => {
-          this.passedCurrency = "USD";
           this.showExchanges = true;
         });
       });
@@ -181,9 +186,7 @@ export default {
               sendMessage(
                 this,
                 "bot",
-                `${baseMessage} ${this.$t("fortune.bot.isValue")} ${
-                  response.value
-                }${unit}`
+                this.messageWithValue(baseMessage, response.value, unit)
               ).then(() => {
                 sendMessage(
                   this,
@@ -219,9 +222,7 @@ export default {
             sendMessage(
               this,
               "bot",
-              `${baseMessage} ${this.$t("fortune.bot.isValue")} ${
-                response.value
-              }${unit}`
+              this.messageWithValue(baseMessage, response.value, unit)
             ).then(() => {
               sendMessage(this, "bot", this.$t("fortune.bot.chooseTime")).then(
                 () => {
@@ -235,17 +236,15 @@ export default {
     },
     showHistoryData() {
       this.showTimeButtons = false;
-      sendMessage(
-        this,
-        "user",
-        `${this.$t("fortune.user.chosenHistory")}`
-      ).then(() => {
-        sendMessage(this, "bot", this.$t("fortune.bot.historyChoice")).then(
-          () => {
-            this.choosePeriod = true;
-          }
-        );
-      });
+      sendMessage(this, "user", this.$t("fortune.user.chosenHistory")).then(
+        () => {
+          sendMessage(this, "bot", this.$t("fortune.bot.historyChoice")).then(
+            () => {
+              this.choosePeriod = true;
+            }
+          );
+        }
+      );
     },
     showDayChoiceComponent() {
       this.choosePeriod = false;
@@ -292,6 +291,7 @@ export default {
                   );
                 } else {
                   this.data = response;
+                  this.passedCurrency = this.isCurrency ? "" : "USD";
                   this.showFutureDataComponent = true;
                 }
               });
@@ -322,9 +322,11 @@ export default {
                 sendMessage(
                   this,
                   "bot",
-                  `${baseMessage} ${data[0]} ${this.$t("fortune.bot.value")} ${
-                    response.value
-                  }${unit}`
+                  this.messageWithValue(
+                    `${baseMessage} ${data[0]} ${this.$t("fortune.bot.value")}`,
+                    response.value,
+                    unit
+                  )
                 )
               );
             }
@@ -368,8 +370,8 @@ export default {
                 );
               } else {
                 this.data = response;
+                this.passedCurrency = this.isCurrency ? "" : "USD";
                 this.showHistoryDataComponent = true;
-                this.endCategoryAfter(this.$nextTick());
               }
             });
         });
