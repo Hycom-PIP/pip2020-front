@@ -309,7 +309,7 @@
       "currencyFutureData": "Oto prognoza kursu:",
       "historyData": "Oto historyczne ceny akcji dla okresu ",
       "historyDataDay": "Oto historyczne dane cen akcji dla wybranego dnia: ",
-      "historyChoice": "Interesuje Cię jakiś konkretny dzień czy dłuższy okres czasu?",
+      "historyChoice": "Interesuje Cię jakiś konkretny dzień czy dłuższy okres?",
       "dayChoice": "Świetnie! Wybierz dzień z kalendarza, a ja zaraz przedstawię Ci wszystkie istotne informacje 💲",
       "periodChoice": "Świetnie! Wskaż okres zaznaczając jego dzień początkowy i końcowy w kalendarzu, a ja zaraz przedstawię Ci wszystkie istotne informacje \uD83D\uDCB2",
       "valueStockInDay": "Wartość akcji w dniu",
@@ -332,7 +332,7 @@
       "actual": "Aktualne",
       "future": "Prognoza",
       "day": "Dzień",
-      "period": "Okres czasu",
+      "period": "Okres",
       "choicePeriod": "Potwierdź"
     }
   },
